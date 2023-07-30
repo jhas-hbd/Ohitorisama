@@ -6,20 +6,33 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
+    @user = current_user
+    if @user.update(user_params)
+      flash[:notice] = "登録情報を変更しました"
+      redirect_to users_mypage_path
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
   end
 
   def withdraw
+    user = current_user
+    user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会しました。"
+    redirect_to new_user_registration_path
   end
 
 
   private
-  def customer_params
-    params.require(:user).permit(:name, :introduction)
+  def user_params
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
 end

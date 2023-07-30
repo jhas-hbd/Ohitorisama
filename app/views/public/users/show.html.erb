@@ -1,2 +1,17 @@
-<div><%= @user.name %></div>
-<div><%= image_tag @user.get_profile_image(100, 100) %></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="d-flex justify-content-center">
+        <%= image_tag @user.get_profile_image(250, 250) %>
+        <div>
+          <%= @user.name %>
+          <p>introduction</p>
+          <%= @user.introduction %>
+        </div>
+        <%= link_to "edit", users_information_edit_path %>
+      </div>
+
+    </div>
+  </div>
+</div>

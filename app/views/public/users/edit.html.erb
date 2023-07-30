@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5">ユーザー情報編集</h4>
+
+      <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
+        <div class="d-flex">
+          <%= image_tag @user.get_profile_image(200, 200) %>
+          <div class="form-group">
+            <%= f.label :プロフィール画像 %>
+            <%= f.file_field :profile_image, class: "form-control-file", accept: "image/*" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :ユーザーネーム %>
+          <%= f.text_field :name, class: "form-control user_name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :introduction %>
+          <%= f.text_area :introduction, class: "form-control user_introduction" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "変更を保存", class: "btn btn-info" %>
+        </div>
+      <% end %>
+
+      <%= link_to "戻る", users_mypage_path(@user) %>
+      <%= link_to "退会する", users_unsubscribe_path, class: "btn btn-danger" %>
+
+    </div>
+  </div>
+</div>
