@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12 col-md-7 mx-auto bg-secondary">
+      <div class="d-flex">
+        <%= image_tag @user.get_profile_image(200, 200), class: "rounded-circle ml-3 mr-5" %>
+        <div class="mt-3">
+          <p style="font-size: 25px;">
+            <strong><%= @user.name %></strong>
+          </p>
+          <p style="font-size: 20px;">
+            <%= @user.introduction %>
+          </p>
+          <%= link_to "編集", users_information_edit_path, class: "btn btn-sm btn-outline-dark", style: "color: black;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
