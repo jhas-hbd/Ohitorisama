@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/0303429eff.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,6 +16,9 @@
       <% if user_signed_in? %>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+        <li>
+          <%= link_to "マイページ", users_mypage_path(current_user) %>
         </li>
       <% else %>
         <li>

@@ -12,8 +12,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:notice] = "登録情報を変更しました"
-      redirect_to users_mypage_path
+      redirect_to users_mypage_path, notice: "登録情報を変更しました"
     else
       render :edit
     end
@@ -26,8 +25,7 @@ class Public::UsersController < ApplicationController
     user = current_user
     user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会しました。"
-    redirect_to new_user_registration_path
+    redirect_to new_user_registration_path, notice: "退会しました。"
   end
 
 
