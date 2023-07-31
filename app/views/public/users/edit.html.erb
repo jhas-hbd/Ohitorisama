@@ -3,7 +3,7 @@
     <div class="col-md-8 mx-auto">
       <h4 class="my-5">ユーザー編集</h4>
 
-      <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
+      <%= form_with model: @user, url: user_path, method: :patch do |f| %>
         <div class="d-flex mb-4 bg-secondary">
           <%= image_tag @user.get_profile_image(200, 200), class: "rounded-circle mr-5" %>
           <div class="form-group mt-5">
@@ -22,10 +22,10 @@
         <div class="form-group d-flex">
           <div class="mx-auto">
             <%= f.submit "変更を保存", class: "btn btn-outline-dark" %>
-            <%= link_to "戻る", users_mypage_path(@user), class: "btn btn-outline-info" %>
+            <%= link_to "戻る", user_path(@user), class: "btn btn-outline-info" %>
           </div>
           <div>
-            <%= link_to "退会する", users_unsubscribe_path, class: "btn btn-outline-danger" %>
+            <%= link_to "退会する", unsubscribe_user_path, class: "btn btn-outline-danger" %>
           </div>
         </div>
       <% end %>
