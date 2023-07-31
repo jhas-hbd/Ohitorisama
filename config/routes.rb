@@ -14,11 +14,15 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get "users/mypage" => "users#show"
-    get "users/information/edit" => "users#edit"
-    patch "users/information" => "users#update"
-    get "users/unsubscribe" => "users#unsubscribe"
-    patch "users/withdraw" => "users#withdraw"
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get "unsubscribe"
+        patch "withdraw"
+      end
+      resource :relationships, only: [:create, :destroy]
+      get "follows" => "relationships#follows"
+      get "followers" => "relationships#followers"
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
