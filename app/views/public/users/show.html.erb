@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-sm-12 col-md-7 mx-auto bg-secondary">
+    <div class="col-md-7 mx-auto bg-secondary">
       <div class="d-flex">
         <%= image_tag @user.get_profile_image(200, 200), class: "rounded-circle ml-3 mr-5" %>
         <div class="mt-3">
@@ -38,7 +38,7 @@
                 <% end %>
               <% end %>
             <% else %>
-              <%= link_to "編集", edit_user_path, class: "btn btn-sm btn-outline-dark", style: "color: black;" %>
+              <%= link_to "編集", edit_user_path, class: "btn btn-sm btn-outline-dark ml-5", style: "color: black;" %>
             <% end %>
 
           </div>

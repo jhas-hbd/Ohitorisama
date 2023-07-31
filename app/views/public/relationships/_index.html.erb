@@ -1,8 +1,10 @@
-<div>
+<div class="col-md-5 d-flex bg-secondary">
   <% users.each do |user| %>
     <%= image_tag user.get_profile_image(150, 150), class: "rounded-circle" %>
-    <%= user.name %>
-    <%= user.introduction %>
-    <p>投稿数：</p>
+    <div class="ml-5 mt-3">
+      <p style="font-size: 20px;"><%= user.name %></p>
+      <p style="font-size: 15px;"><%= user.introduction %></p>
+      <p>投稿数：</p>
+    </div>
   <% end %>
 </div>
