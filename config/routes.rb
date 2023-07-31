@@ -14,12 +14,14 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    
     resources :users, only: [:show, :edit, :update] do
       member do
         get "unsubscribe"
         patch "withdraw"
       end
+      resource :relationships, only: [:create, :destroy]
+      get "follows" => "relationships#follows"
+      get "followers" => "relationships#followers"
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

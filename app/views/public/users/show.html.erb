@@ -11,7 +11,37 @@
           <p style="font-size: 20px;">
             <%= @user.introduction %>
           </p>
-          <%= link_to "編集", edit_user_path, class: "btn btn-sm btn-outline-dark", style: "color: black;" %>
+
+          <div class="d-flex">
+            <p class="d-flex mr-3">
+              フォロー：
+              <%= link_to user_follows_path(@user), style: "color: black;" do %>
+                <%= @user.followers.count %>
+              <% end %>
+            </p>
+
+            <p class="d-flex mr-3">
+              フォロワー：
+              <%= link_to user_followers_path(@user), style: "color: black;" do %>
+                <%= @user.followeds.count %>
+              <% end %>
+            </p>
+
+            <% if current_user != @user %>
+              <% if current_user.following?(@user) %>
+                <%= link_to user_relationships_path(@user.id), method: :delete do %>
+                  <i class="fas fa-user-times"></i>
+                <% end %>
+              <% else %>
+                <%= link_to user_relationships_path(@user.id), method: :post do %>
+                  <i class="fas fa-user-plus"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to "編集", edit_user_path, class: "btn btn-sm btn-outline-dark", style: "color: black;" %>
+            <% end %>
+
+          </div>
         </div>
       </div>
     </div>
