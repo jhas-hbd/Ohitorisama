@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5">会員一覧</h4>
+      <% @users.each do |user| %>
+        <div>
+          <%= user.id %>
+          <%= user.name %>
+          <%= user.email %>
+          <% if user.is_deleted == true %>
+            <span style="color:darkgray;"><%= "退会" %></strong>
+          <% else %>
+            <strong style="color:orange;"><%= "有効" %></strong>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
