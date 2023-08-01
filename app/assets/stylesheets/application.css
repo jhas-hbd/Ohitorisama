@@ -9,7 +9,6 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
@@ -19,4 +18,43 @@
   padding: 0;
   box-sizing: border-box;
   color: #6c6b6b;
+}
+
+/*Menuボタン*/
+.mypage-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 26px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+.mypage-dropdown.active {
+  display: block;
+}
+
+.mypage-btn-container {
+  position: relative;
+}
+
+.mypage-btn-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mypage-dropdown a {
+  color: #5c3e26;
+  text-decoration: none;
+}
+
+.mypage-dropdown a:hover {
+  color: #8b5c38;
+}
+
+.category-container:hover {
+  cursor: pointer;
 }

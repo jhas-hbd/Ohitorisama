@@ -1,33 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-10 mx-auto">
       <h4 class="my-5"><%= @user.name %>さんの会員詳細</h4>
-
-      <div class="table">
-        <div class="table_line">
-          <div class="block">ユーザーID</div>
-          <div class="block"><%= @user.id %></div>
-        </div>
-        <div class="table_line">
-          <div class="block">ユーザーネーム</div>
-          <div class="block"><%= @user.name %></div>
-        </div>
-        <div class="table_line">
-          <div class="block">自己紹介文</div>
-          <div class="block"><%= @user.introduction %></div>
-        </div>
-        <div class="table_line">
-          <div class="block">メールアドレス</div>
-          <div class="block"><%= @user.email %></div>
-        </div>
-        <div class="table_line">
-          <div class="block">ユーザーステータス</div>
-          <div class="block"><%= @user.user_status %></div>
-        </div>
+      <table class="table table-borderless">
+        <tr>
+          <th>ユーザーID</th>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th>ユーザーネーム</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>自己紹介文</th>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>ユーザーステータス</th>
+          <td><%= @user.user_status %></td>
+        </tr>
+      </table>
+      <div class="row justify-content-center my-5">
+        <%= link_to "編集", edit_admin_user_path(@user) %>
       </div>
-
-      <%= link_to "編集", edit_admin_user_path(@user) %>
-
     </div>
   </div>
 </div>
