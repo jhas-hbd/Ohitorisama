@@ -1,0 +1,45 @@
+<header>
+  <nav class="navbar navbar-expand-lg py-4">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mx-5 d-flex ml-auto">
+        <li>
+          <div class="mypage-btn-container" id="mypageBtnContainer">
+            <button class="btn btn-lg mx-3" style="background-color: black; color: white;">Menu</button>
+            <div class="mypage-dropdown" id="mypageDropdown">
+              <ul>
+                <% if user_signed_in? %>
+                  <li>
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  </li>
+                  <li>
+                    <%= link_to "マイページ", user_path(current_user) %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "新規登録", new_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "ログイン", new_user_session_path %>
+                  </li>
+                <% end %>
+
+                <% if admin_signed_in? %>
+                  <li>
+                    <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
+                  </li>
+                  <li>
+                    <%= link_to "会員一覧", admin_users_path %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "管理者ログイン", new_admin_session_path %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
