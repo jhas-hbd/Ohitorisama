@@ -19,6 +19,11 @@ Rails.application.routes.draw do
         get "unsubscribe"
         patch "withdraw"
       end
+      
+      collection do
+        get "bookmark"
+      end
+      
       resource :relationships, only: [:create, :destroy]
       get "follows" => "relationships#follows"
       get "followers" => "relationships#followers"

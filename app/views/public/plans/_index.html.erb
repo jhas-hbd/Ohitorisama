@@ -1,0 +1,25 @@
+<div>
+  <% plans.each do |plan| %>
+    <div>
+      <%= image_tag plan.get_plan_image(300, 300) %>
+    </div>
+    <div>
+      <%= link_to plan_path(plan) do %>
+        【<%= plan.title %>】
+      <% end %>
+      <%= plan.prefecture %>
+      <% if plan.bookmarked_by?(current_user) %>
+        <%= link_to plan_bookmarks_path(plan), method: :delete, class: "ml-3" do %>
+          <i class="fas fa-bookmark"></i><%= plan.bookmarks.count %>
+        <% end %>
+      <% else %>
+        <%= link_to plan_bookmarks_path(plan), method: :post, class: "ml-3" do %>
+          <i class="far fa-bookmark"></i><%= plan.bookmarks.count %>
+        <% end %>
+      <% end %><br>
+      <%= plan.impression %><br>
+      <%= plan.created_at.strftime("%Y/%m/%d") %>
+      <%= image_tag plan.user.get_profile_image(40, 40), class: "rounded-circle" %>
+    </div>
+  <% end %>
+</div>
