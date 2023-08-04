@@ -1,7 +1,11 @@
 <div>
   <%= image_tag @plan.get_plan_image(300, 300) %>
   <p>
-    タイトル<br><%= @plan.title %>
+    <%= @plan.title %>
+    <%= @plan.prefecture %>
+    <%= @plan.stay_days %>
+    <%= @plan.main_vehicle %>
+    <%= @plan.impression %>
     <%= link_to "編集", edit_plan_path(@plan) %>
   </p>
 </div>
@@ -9,7 +13,7 @@
 <% @days.each do |day| %>
 <div>
   <p>
-    日にち<br><%= day.number %>
+    日にち<br><%= day.date %>
     <%= link_to "編集", edit_plan_day_path(@plan, day) %>
   </p>
   <p>
@@ -18,6 +22,11 @@
       <%= schedule.start_at.strftime('%H:%M') %> ~
       <%= schedule.finished_at.strftime('%H:%M') %><br>
       <%= schedule.place %>
+      <%= schedule.schedule_comment %>
+      <%= schedule.cost %>
+      <%= schedule.transportaion %>
+      <%= schedule.transfer_time %>
+      <%= schedule.expense %>
       <%= link_to "編集", edit_plan_day_schedule_path(@plan, day, schedule) %><br>
     <% end %>
   </p>

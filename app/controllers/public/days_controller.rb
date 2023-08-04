@@ -24,6 +24,10 @@ class Public::DaysController < ApplicationController
   end
 
   def destroy
+    plan = Plan.find(params[:plan_id])
+    day = Day.find(params[:id])
+    day.destroy
+    redirect_to check_plan_path(plan)
   end
 
 

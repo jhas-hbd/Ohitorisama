@@ -14,7 +14,7 @@
   </div>
   <div class="form_group">
     <%= f.label :コメント %>
-    <%= f.text_area :comment %>
+    <%= f.text_area :schedule_comment %>
   </div>
   <div class="form_group">
     <%= f.label :費用 %>
@@ -36,3 +36,5 @@
     <%= f.submit class: "btn btn-info" %>
   </div>
 <% end %>
+
+<%= link_to "削除", plan_day_schedule_path(@plan, @day, @schedule), method: :delete %>

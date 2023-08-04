@@ -28,6 +28,10 @@ class Public::SchedulesController < ApplicationController
   end
 
   def destroy
+    plan = Plan.find(params[:plan_id])
+    schedule = Schedule.find(params[:id])
+    schedule.destroy
+    redirect_to check_plan_path(plan)
   end
 
 
