@@ -13,4 +13,9 @@ class Public::BookmarksController < ApplicationController
     redirect_to request.referer
   end
 
+  def index
+    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:plan_id)
+    @bookmark_list = Plan.find(bookmarks)
+  end
+
 end
