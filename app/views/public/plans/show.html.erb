@@ -14,12 +14,19 @@
         </p>
       </div>
 
+      <div class="row my-5">
+        <div class="col-md-3">時間</div>
+        <div class="col-md-3">場合やイベント/費用</div>
+        <div class="col-md-3">コメント</div>
+        <div class="col-md-3">そこまでの移動</div>
+      </div>
+
       <% @days.each do |day| %>
       <div>
         <p>
           <%= day.date.strftime("%Y年%m月%d日") %>
         </p>
-        <div class="row">
+        <div class="row mb-5">
           <% day.schedules.each do |schedule| %>
           <div class="col-md-3">
             <%= schedule.start_at.strftime('%H:%M') %> ~
@@ -33,7 +40,7 @@
             <%= schedule.schedule_comment %>
           </div>
           <div class="col-md-3">
-            <%= schedule.transportaion %> |
+            <%= schedule.transportation %> |
             <%= schedule.transfer_time %> 分 |
             <%= schedule.expense %> 円
           </div>
