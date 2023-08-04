@@ -11,8 +11,9 @@ class User < ApplicationRecord
   # 一覧画面で使う
   has_many :following_users, through: :followers, source: :followed
   has_many :follower_users, through: :followeds, source: :follower
-  
+
   has_many :plans, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_one_attached :profile_image
 

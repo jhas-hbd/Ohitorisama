@@ -18,6 +18,7 @@ class Public::PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
     @days = @plan.days
+    @comment = Comment.new
   end
 
   def edit

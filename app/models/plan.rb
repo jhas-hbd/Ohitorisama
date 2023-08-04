@@ -1,6 +1,7 @@
 class Plan < ApplicationRecord
   belongs_to :user
   has_many :days, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   enum prefecture:{
     都道府県:0,
