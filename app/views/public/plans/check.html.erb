@@ -39,7 +39,8 @@
           <div class="col-md-3">
             <%= schedule.transportaion %> |
             <%= schedule.transfer_time %> 分 |
-            <%= schedule.expense %> 円
+            <%= schedule.expense %> 円 | 
+            <%= link_to "編集", edit_plan_day_schedule_path(@plan, day, schedule) %>
           </div>
           <% end %>
         </div>
