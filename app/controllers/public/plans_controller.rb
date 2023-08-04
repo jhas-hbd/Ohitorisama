@@ -31,7 +31,7 @@ class Public::PlansController < ApplicationController
   end
 
   def index
-    @plans = Plan.all
+    @plans = Plan.all.order(created_at: :desc)
   end
 
   def destroy
