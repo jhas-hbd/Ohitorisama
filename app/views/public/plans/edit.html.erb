@@ -1,0 +1,46 @@
+<div class"container">
+  <div class="row">
+    <div class="col-md-8 mx-auto pb-5 pl-5">
+      <h4 class="my-5">プラン編集</h4>
+      <div class="ml-5">
+      <%= form_with model: @plan, method: :patch do |f| %>
+        <div class="form_group">
+          <%= f.label :タイトル, class: "col-md-4" %>
+          <%= f.text_field :title, class: "col-md-4" %>
+        </div>
+        <div class="form_group">
+          <%= f.label :都道府県, class: "col-md-4" %>
+          <%= f.select :prefecture, Plan.prefectures.keys, {}, class: "col-md-4" %>
+        </div>
+        <div class="form_group">
+          <%= f.label :宿泊日数, class: "col-md-4" %>
+          <%= f.select :stay_days, Plan.stay_days.keys, {}, class: "col-md-4" %>
+        </div>
+        <div class="form_group">
+          <%= f.label :予算, class: "col-md-4" %>
+          <%= f.select :budget, Plan.budgets.keys, {}, class: "col-md-4" %>
+        </div>
+        <div class="form_group">
+          <%= f.label :主な移動手段, class: "col-md-4" %>
+          <%= f.select :main_vehicle, Plan.main_vehicles.keys, {}, class: "col-md-4" %>
+        </div>
+        <div class="form_group">
+          <%= f.label :感想, class: "col-md-4" %>
+          <%= f.text_area :impression, class: "col-md-4" %>
+        </div>
+        <div class="form-group d-flex">
+          <%= f.label :思い出の一枚, class: "col-md-4" %>
+          <%= f.file_field :plan_image, class: "form-control-file col-md-4", accept: "image/*" %>
+        </div>
+        <div class="form-group d-flex">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <%= f.submit "確認画面", class: "btn btn-outline-dark mt-5 mr-5" %>
+            <%= link_to "削除", plan_path(@plan), method: :delete, data: { confirm: "日付やスケジュールも消えますがよろしいですか？"}, class: "btn btn-sm btn-outline-danger mt-5 ml-5" %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

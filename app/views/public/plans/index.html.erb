@@ -1,0 +1,30 @@
+<div class"container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h4>プラン一覧</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 mx-auto text-center py-5">
+
+      <div>
+        <% @plans.each do |plan| %>
+        <div>
+          <%= image_tag plan.get_plan_image(300, 300) %>
+        </div>
+        <div>
+          <%= link_to plan_path(plan) do %>
+            【<%= plan.title %>】
+          <% end %>
+          <%= plan.prefecture %><br>
+          <%= plan.impression %><br>
+          <%= plan.created_at.strftime("%Y/%m/%d") %>
+          <%= image_tag plan.user.get_profile_image(40, 40), class: "rounded-circle" %>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

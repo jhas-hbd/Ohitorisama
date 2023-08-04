@@ -1,0 +1,53 @@
+<div class"container">
+  <div class="row">
+    <div class="col-md-8 mx-auto pb-5 pl-5">
+      <div class="ml-5">
+        <%= form_with model: [@plan, @day, @schedule], method: :patch do |f| %>
+          <div class="form_group">
+            <%= f.label :開始時刻, class: "col-md-4" %>
+            <%= f.time_select :start_at, {}, class: "col-md-2" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :終了時刻, class: "col-md-4" %>
+            <%= f.time_select :finished_at, {}, class: "col-md-2" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :場所やイベント, class: "col-md-4" %>
+            <%= f.text_field :place, class: "col-md-4" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :コメント, class: "col-md-4" %>
+            <%= f.text_area :schedule_comment, class: "col-md-4" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :費用, class: "col-md-4" %>
+            <%= f.text_field :cost, class: "col-md-4" %> 円
+          </div>
+          <div class="d-flex">
+            <p class="col-md-4">そこまでの</p>
+            <p class="col-md-4">-------------------------------------------</p>
+          </div>
+          <div class="form_group">
+            <%= f.label :移動手段, class: "col-md-4" %>
+            <%= f.select :transportation, Schedule.transportations.keys, {}, class: "col-md-4" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :移動時間, class: "col-md-4" %>
+            <%= f.text_field :transfer_time, class: "col-md-4" %> 分
+          </div>
+          <div class="form_group">
+            <%= f.label :交通費, class: "col-md-4" %>
+            <%= f.text_field :expense, class: "col-md-4" %> 円
+          </div>
+          <div class="form-group d-flex">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <%= f.submit "確認画面", class: "btn btn-outline-dark mr-5 mt-5" %>
+              <%= link_to "削除", plan_day_schedule_path(@plan, @day, @schedule), method: :delete, class: "btn btn-sm btn-outline-danger mt-5 ml-5" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

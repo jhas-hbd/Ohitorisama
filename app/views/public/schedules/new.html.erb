@@ -1,0 +1,78 @@
+<div class"container">
+  <div class="row">
+    <div class="col-md-8 mx-auto pb-5 pl-5">
+      <h4 class="my-5"><%= @day.date.strftime("%Y年%m月%d日") %> のスケジュール</h4>
+      <div>
+        <div class="row mb-5 ml-5">
+          <% @schedules.each do |schedule| %>
+          <div class="col-md-3">
+            <%= schedule.start_at.strftime('%H:%M') %> ~
+            <%= schedule.finished_at.strftime('%H:%M') %>
+          </div>
+          <div class="col-md-3">
+            <%= schedule.place %> |
+            <%= schedule.cost %>円
+          </div>
+          <div class="col-md-3">
+            <%= schedule.schedule_comment %>
+          </div>
+          <div class="col-md-3">
+            <%= schedule.transportation %> |
+            <%= schedule.transfer_time %>分 |
+            <%= schedule.expense %>円
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="ml-5">
+        <%= form_with model: @schedule, url: plan_day_schedules_path do |f| %>
+          <div class="form_group">
+            <%= f.label :開始時刻, class: "col-md-4" %>
+            <%= f.time_select :start_at, {}, class: "col-md-2" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :終了時刻, class: "col-md-4" %>
+            <%= f.time_select :finished_at, {}, class: "col-md-2" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :場所やイベント, class: "col-md-4" %>
+            <%= f.text_field :place, class: "col-md-4" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :コメント, class: "col-md-4" %>
+            <%= f.text_area :schedule_comment, class: "col-md-4" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :費用, class: "col-md-4" %>
+            <%= f.text_field :cost, class: "col-md-4" %> 円
+          </div>
+          <div class="d-flex">
+            <p class="col-md-4">そこまでの</p>
+            <p class="col-md-4">-------------------------------------------</p>
+          </div>
+          <div class="form_group">
+            <%= f.label :移動手段, class: "col-md-4" %>
+            <%= f.select :transportation, Schedule.transportations.keys, {}, class: "col-md-4" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :移動時間, class: "col-md-4" %>
+            <%= f.text_field :transfer_time, class: "col-md-4" %> 分
+          </div>
+          <div class="form_group">
+            <%= f.label :交通費, class: "col-md-4" %>
+            <%= f.text_field :expense, class: "col-md-4" %> 円
+          </div>
+          <div class="form-group d-flex">
+            <div class="col-md-4"></div>
+            <%= f.submit "スケジュール作成", class: "btn btn-outline-dark ml-5 mt-5" %>
+          </div>
+        <% end %>
+        <div>
+          <%= link_to "日程追加", new_plan_day_path %> |
+          <%= link_to "確認画面", check_plan_path(@plan) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
