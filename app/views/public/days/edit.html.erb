@@ -1,14 +1,20 @@
-<div>
-  <h1>日にち編集</h1>
-  <%= form_with model: [@plan, @day], method: :patch do |f| %>
-    <div class="form_group">
-      <%= f.label :日にち %>
-      <%= f.date_select :date, use_month_numbers: true %>
+<div class"container">
+  <div class="row">
+    <div class="col-md-6 mx-auto pb-5 pl-5">
+      <h4 class="my-5">日にち入力</h4>
+      <%= form_with model: [@plan, @day], method: :patch do |f| %>
+        <div class="form_group">
+          <%= f.label :日にち, class: "col-md-4" %>
+          <%= f.date_select :date, use_month_numbers: true, class: "col-md-4" %>
+        </div>
+        <div class="form_group d-flex">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <%= f.submit "確認画面", class: "btn btn-outline-dark mt-5 mr-5" %>
+            <%= link_to "削除", plan_day_path(@plan, @day), method: :delete, class: "btn btn-sm btn-outline-danger mt-5 ml-3" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div class="form_group">
-      <%= f.submit "保存", class: "btn btn-info" %>
-    </div>
-  <% end %>
+  </div>
 </div>
-
-<%= link_to "削除", plan_day_path(@plan, @day), method: :delete %>
