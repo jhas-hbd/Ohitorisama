@@ -1,0 +1,38 @@
+<h1>スケジュール編集</h1>
+<%= form_with model: [@plan, @day, @schedule], method: :patch do |f| %>
+  <div class="form_group">
+    <%= f.label :開始時刻 %>
+    <%= f.time_select :start_at, {} %>
+  </div>
+  <div class="form_group">
+    <%= f.label :終了時刻 %>
+    <%= f.time_select :finished_at, {} %>
+  </div>
+  <div class="form_group">
+    <%= f.label :場所 %>
+    <%= f.text_field :place %>
+  </div>
+  <div class="form_group">
+    <%= f.label :コメント %>
+    <%= f.text_area :comment %>
+  </div>
+  <div class="form_group">
+    <%= f.label :費用 %>
+    <%= f.text_field :cost %>円
+  </div>
+  <div class="form_group">
+    <%= f.label :移動手段 %>
+    <%= f.select :transportation, Schedule.transportations.keys, {} %>
+  </div>
+  <div class="form_group">
+    <%= f.label :移動時間 %>
+    <%= f.text_field :transfer_time %>分
+  </div>
+  <div class="form_group">
+    <%= f.label :交通費 %>
+    <%= f.text_field :expense %>円
+  </div>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-info" %>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<div>
+  <h1>日にち編集</h1>
+  <%= form_with model: [@plan, @day], method: :patch do |f| %>
+    <div class="form_group">
+      <%= f.label :日にち %>
+      <%= f.date_select :date, use_month_numbers: true %>
+    </div>
+    <div class="form_group">
+      <%= f.submit "保存", class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>

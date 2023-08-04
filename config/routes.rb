@@ -23,6 +23,14 @@ Rails.application.routes.draw do
       get "follows" => "relationships#follows"
       get "followers" => "relationships#followers"
     end
+    resources :plans do
+      member do
+        get 'check'
+      end
+      resources :days, except: [:show, :index]do
+        resources :schedules, except: [:show, :index]
+      end
+    end
   end
 
   #管理者側のルーティング設定

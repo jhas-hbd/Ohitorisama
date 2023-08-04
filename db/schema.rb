@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_31_000633) do
+ActiveRecord::Schema.define(version: 2023_08_03_224446) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,9 +52,42 @@ ActiveRecord::Schema.define(version: 2023_07_31_000633) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "days", force: :cascade do |t|
+    t.date "date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "plan_id", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.integer "prefecture", default: 0, null: false
+    t.integer "stay_days", default: 0, null: false
+    t.integer "budget", default: 0, null: false
+    t.integer "main_vehicle", default: 0, null: false
+    t.text "impression", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "day_id", null: false
+    t.time "start_at", null: false
+    t.time "finished_at", null: false
+    t.string "place", null: false
+    t.text "schedule_comment", null: false
+    t.string "cost", null: false
+    t.integer "transportaion", default: 0, null: false
+    t.string "transfer_time", null: false
+    t.string "expense", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

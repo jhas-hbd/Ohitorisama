@@ -1,0 +1,34 @@
+<h2>プラン編集</h2>
+<%= form_with model: @plan, method: :patch do |f| %>
+  <div class="form_group">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form_group">
+    <%= f.label :都道府県 %>
+    <%= f.select :prefecture, Plan.prefectures.keys, {} %>
+  </div>
+  <div class="form_group">
+    <%= f.label :宿泊日数 %>
+    <%= f.select :stay_days, Plan.stay_days.keys, {} %>
+  </div>
+  <div class="form_group">
+    <%= f.label :予算 %>
+    <%= f.select :budget, Plan.budgets.keys, {} %>
+  </div>
+  <div class="form_group">
+    <%= f.label :主な移動手段 %>
+    <%= f.select :main_vehicle, Plan.main_vehicles.keys, {} %>
+  </div>
+  <div class="form_group">
+    <%= f.label :感想 %>
+    <%= f.text_area :impression %>
+  </div>
+  <div class="form-group">
+    <%= f.label :プラン画像 %>
+    <%= f.file_field :plan_image, class: "form-control-file", accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "保存", class: "btn btn-info" %>
+  </div>
+<% end %>

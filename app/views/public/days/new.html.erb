@@ -1,0 +1,12 @@
+<div>
+  <h1>日にち入力</h1>
+  <%= form_with model: @day, url: plan_days_path do |f| %>
+    <div class="form_group">
+      <%= f.label :日にち %>
+      <%= f.date_select :date, use_month_numbers: true %>
+    </div>
+    <div class="form_group">
+      <%= f.submit "スケジュール入力", class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>
