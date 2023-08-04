@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         get 'check'
       end
       resources :comments, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
       resources :days, except: [:show, :index]do
         resources :schedules, except: [:show, :index]
       end

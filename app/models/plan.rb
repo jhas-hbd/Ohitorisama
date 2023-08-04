@@ -2,6 +2,7 @@ class Plan < ApplicationRecord
   belongs_to :user
   has_many :days, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   enum prefecture:{
     都道府県:0,
@@ -39,6 +40,10 @@ class Plan < ApplicationRecord
       plan_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     plan_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user.id)
   end
 
 end
