@@ -10,19 +10,19 @@
         </div>
         <div class="form_group">
           <%= f.label :都道府県, class: "col-md-4" %>
-          <%= f.select :prefecture, Plan.prefectures.keys, {}, class: "col-md-4" %>
+          <%= f.select :prefecture, Plan.prefectures.keys, { include_blank: '---' }, class: "col-md-4" %>
         </div>
         <div class="form_group">
           <%= f.label :宿泊日数, class: "col-md-4" %>
-          <%= f.select :stay_days, Plan.stay_days.keys, {}, class: "col-md-4" %>
+          <%= f.select :stay_days, Plan.stay_days.keys, { include_blank: '---' }, class: "col-md-4" %>
         </div>
         <div class="form_group">
           <%= f.label :予算, class: "col-md-4" %>
-          <%= f.select :budget, Plan.budgets.keys, {}, class: "col-md-4" %>
+          <%= f.select :budget, Plan.budgets.keys, { include_blank: '---' }, class: "col-md-4" %>
         </div>
         <div class="form_group">
           <%= f.label :主な移動手段, class: "col-md-4" %>
-          <%= f.select :main_vehicle, Plan.main_vehicles.keys, {}, class: "col-md-4" %>
+          <%= f.select :main_vehicle, Plan.main_vehicles.keys, { include_blank: '---' }, class: "col-md-4" %>
         </div>
         <div class="form_group">
           <%= f.label :感想, class: "col-md-4" %>
