@@ -32,6 +32,10 @@
           <%= f.label :思い出の一枚, class: "col-md-4" %>
           <%= f.file_field :plan_image, class: "form-control-file col-md-4", accept: "image/*" %>
         </div>
+        <div class="form_group d-flex">
+          <label class="col-md-4">タグ(,で複数タグ登録できます)</label>
+          <%= f.text_field :name,value: @tag_list, class: 'form-control col-md-4' %>
+        </div>
         <div class="form-group d-flex">
           <div class="col-md-4"></div>
           <%= f.submit "日程入力", class: "btn btn-outline-dark mt-5" %>
