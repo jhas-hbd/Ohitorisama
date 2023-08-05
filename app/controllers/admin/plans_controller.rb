@@ -16,4 +16,8 @@ class Admin::PlansController < ApplicationController
     @plans = @user.plans
   end
 
+  def comment
+    @comments = Comment.all
+  end
+
 end
