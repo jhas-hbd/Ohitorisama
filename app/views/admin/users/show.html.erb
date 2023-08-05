@@ -25,7 +25,8 @@
         </tr>
       </table>
       <div class="row justify-content-center my-5">
-        <%= link_to "編集", edit_admin_user_path(@user) %>
+        <%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-outline-dark mr-5" %>
+        <%= link_to "プラン一覧", individual_admin_plan_path(@user), class: "btn btn-outline-dark ml-5" %>
       </div>
     </div>
   </div>

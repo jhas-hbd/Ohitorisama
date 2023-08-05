@@ -37,7 +37,13 @@
                     <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
                   </li>
                   <li>
-                    <%= link_to "会員一覧", admin_users_path %>
+                    <%= link_to "ユーザー一覧", admin_users_path %>
+                  </li>
+                  <li>
+                    <%= link_to "プラン一覧", admin_plans_path %>
+                  </li>
+                  <li>
+                    <%= link_to "コメント一覧", comment_admin_plans_path %>
                   </li>
                 <% else %>
                   <li>

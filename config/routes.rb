@@ -19,11 +19,9 @@ Rails.application.routes.draw do
         get "unsubscribe"
         patch "withdraw"
       end
-      
       collection do
         get "bookmark"
       end
-      
       resource :relationships, only: [:create, :destroy]
       get "follows" => "relationships#follows"
       get "followers" => "relationships#followers"
@@ -43,6 +41,15 @@ Rails.application.routes.draw do
   #管理者側のルーティング設定
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
+    resources :plans, only: [:index, :show] do
+      member do
+        get "individual"
+      end
+      collection do
+        get "comment"
+      end
+      resources :comments, only: [:destroy]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
