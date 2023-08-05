@@ -44,7 +44,11 @@
           <%= @plan.stay_days %> |
           <%= @plan.main_vehicle %> |
           <%= @plan.budget %><br>
-          <%= @plan.impression %>
+          <%= @plan.impression %><br>
+          <% @plan_tags.each do |tag| %>
+            <i class="fas fa-tag"></i>
+            <%= tag.name %>
+          <% end %>
         </p>
       </div>
 

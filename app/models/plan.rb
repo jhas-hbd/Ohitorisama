@@ -4,6 +4,9 @@ class Plan < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
+  has_many :plan_tag_relations, dependent: :destroy
+  has_many :tags, through: :plan_tag_relations, dependent: :destroy
+
   enum prefecture:{
     都道府県:0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -44,6 +47,19 @@ class Plan < ApplicationRecord
 
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
+  end
+
+  def save_tags(tags)
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    old_tags = current_tags - tags
+    new_tags = tags - current_tags
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(name:old_name)
+    end
+    new_tags.each do |new_name|
+      tag = Tag.find_or_create_by(name:new_name)
+      self.tags << tag
+    end
   end
 
 end
