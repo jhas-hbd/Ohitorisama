@@ -7,7 +7,22 @@
             <button class="btn btn-lg mx-3" style="background-color: black; color: white;">Menu</button>
             <div class="mypage-dropdown" id="mypageDropdown">
               <ul>
-                <% if user_signed_in? %>
+                <% if admin_signed_in? %>
+                  <% if request.fullpath.include? "/admin" %>
+                    <li>
+                      <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
+                    </li>
+                    <li>
+                      <%= link_to "ユーザー一覧", admin_users_path %>
+                    </li>
+                    <li>
+                      <%= link_to "プラン一覧", admin_plans_path %>
+                    </li>
+                    <li>
+                      <%= link_to "コメント一覧", comment_admin_plans_path %>
+                    </li>
+                  <% end %>
+                <% elsif user_signed_in? %>
                   <li>
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                   </li>
@@ -30,22 +45,6 @@
                   <li>
                     <%= link_to "ログイン", new_user_session_path %>
                   </li>
-                <% end %>
-
-                <% if admin_signed_in? %>
-                  <li>
-                    <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
-                  </li>
-                  <li>
-                    <%= link_to "ユーザー一覧", admin_users_path %>
-                  </li>
-                  <li>
-                    <%= link_to "プラン一覧", admin_plans_path %>
-                  </li>
-                  <li>
-                    <%= link_to "コメント一覧", comment_admin_plans_path %>
-                  </li>
-                <% else %>
                   <li>
                     <%= link_to "管理者ログイン", new_admin_session_path %>
                   </li>

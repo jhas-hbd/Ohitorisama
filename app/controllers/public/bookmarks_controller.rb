@@ -1,4 +1,6 @@
 class Public::BookmarksController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     plan = Plan.find(params[:plan_id])
     bookmark = current_user.bookmarks.new(plan_id: plan.id)

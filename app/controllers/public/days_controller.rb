@@ -1,4 +1,6 @@
 class Public::DaysController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @day = Day.new
   end
