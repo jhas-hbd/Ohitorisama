@@ -7,7 +7,7 @@
           <%= @plan.title %>
           <%= link_to "編集", edit_plan_path(@plan) %>
         </p>
-        <%= image_tag @plan.get_plan_image(300, 300) %>
+        <%= image_tag @plan.get_plan_image, size: '400x300' %>
         <p>
           <%= @plan.prefecture %> |
           <%= @plan.stay_days %> |

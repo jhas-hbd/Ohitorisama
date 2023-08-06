@@ -7,6 +7,12 @@ class Plan < ApplicationRecord
   has_many :plan_tag_relations, dependent: :destroy
   has_many :tags, through: :plan_tag_relations, dependent: :destroy
 
+  validates :prefecture, presence: true
+  validates :stay_days, presence: true
+  validates :budget, presence: true
+  validates :main_vehicle, presence: true
+  validates :title, presence: true
+
   enum prefecture:{
     北海道:0,青森県:1,岩手県:2,宮城県:3,秋田県:4,山形県:5,福島県:6,
     茨城県:7,栃木県:8,群馬県:9,埼玉県:10,千葉県:11,東京都:12,神奈川県:13,
@@ -33,12 +39,8 @@ class Plan < ApplicationRecord
 
   has_one_attached :plan_image
 
-  def get_plan_image(width, height)
-    unless plan_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      plan_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end
-    plan_image.variant(resize_to_limit: [width, height]).processed
+  def get_plan_image
+    (plan_image.attached?) ? plan_image : 'no_image.jpg'
   end
 
   def bookmarked_by?(user)

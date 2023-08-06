@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       end
     end
     get "search" => "searches#search"
+    get "tag_search" => "searches#tag_search"
   end
 
   #管理者側のルーティング設定

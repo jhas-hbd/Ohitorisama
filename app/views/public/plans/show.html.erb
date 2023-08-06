@@ -4,7 +4,7 @@
     <div class="col-md-2 py-5 offset-md-1">
       <div>
         <% @plan.comments.each do |comment| %>
-          <%= image_tag comment.user.get_profile_image(40,40), class: "rounded-circle" %>
+          <%= image_tag comment.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
           <%= comment.user.name %>
           <%= comment.created_at.strftime('%Y/%m/%d') %>
           <% if comment.user == current_user %>
@@ -38,7 +38,7 @@
             <% end %>
           <% end %>
         </p>
-        <%= image_tag @plan.get_plan_image(300, 300) %>
+        <%= image_tag @plan.get_plan_image, size: '400x300' %>
         <p>
           <%= @plan.prefecture %> |
           <%= @plan.stay_days %> |
@@ -47,7 +47,8 @@
           <%= @plan.impression %><br>
           <% @plan_tags.each do |tag| %>
             <i class="fas fa-tag"></i>
-            <%= tag.name %>
+            <%=link_to tag.name,tag_search_path(tag_id: tag.id) %>
+
           <% end %>
         </p>
       </div>
