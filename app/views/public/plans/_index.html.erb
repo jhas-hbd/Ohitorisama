@@ -8,15 +8,9 @@
         【<%= plan.title %>】
       <% end %>
       <%= plan.prefecture %>
-      <% if plan.bookmarked_by?(current_user) %>
-        <%= link_to plan_bookmarks_path(plan), method: :delete, class: "ml-3" do %>
-          <i class="fas fa-bookmark"></i><%= plan.bookmarks.count %>
-        <% end %>
-      <% else %>
-        <%= link_to plan_bookmarks_path(plan), method: :post, class: "ml-3" do %>
-          <i class="far fa-bookmark"></i><%= plan.bookmarks.count %>
-        <% end %>
-      <% end %><br>
+      
+      <%= render 'public/bookmarks/bookmark', plan: plan %><br>
+      
       <%= plan.impression %><br>
       <% plan.tags.each do |tag| %>
         <i class="fas fa-tag"></i>
