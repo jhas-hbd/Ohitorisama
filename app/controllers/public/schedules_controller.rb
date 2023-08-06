@@ -12,8 +12,11 @@ class Public::SchedulesController < ApplicationController
     day = Day.find(params[:day_id])
     @schedule = Schedule.new(schedule_params)
     @schedule.day_id = day.id
-    @schedule.save
-    redirect_to request.referer
+    if @schedule.save
+      redirect_to request.referer
+    else
+      render :new
+    end
   end
 
   def edit
@@ -25,8 +28,11 @@ class Public::SchedulesController < ApplicationController
   def update
     plan = Plan.find(params[:plan_id])
     schedule = Schedule.find(params[:id])
-    schedule.update(schedule_params)
-    redirect_to check_plan_path(plan)
+    if schedule.update(schedule_params)
+      redirect_to check_plan_path(plan)
+    else
+      render :edit
+    end
   end
 
   def destroy

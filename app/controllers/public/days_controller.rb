@@ -9,8 +9,11 @@ class Public::DaysController < ApplicationController
     plan = Plan.find(params[:plan_id])
     @day = Day.new(day_params)
     @day.plan_id = plan.id
-    @day.save
-    redirect_to new_plan_day_schedule_path(plan, @day)
+    if @day.save
+      redirect_to new_plan_day_schedule_path(plan, @day)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,8 +24,11 @@ class Public::DaysController < ApplicationController
   def update
     plan = Plan.find(params[:plan_id])
     day = Day.find(params[:id])
-    day.update(day_params)
-    redirect_to check_plan_path(plan)
+    if day.update(day_params)
+      redirect_to check_plan_path(plan)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -36,7 +42,7 @@ class Public::DaysController < ApplicationController
   private
 
   def day_params
-    params.require(:day).permit(:date)
+    params.require(:day).permit(:day)
   end
 
 end

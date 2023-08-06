@@ -1,7 +1,10 @@
 <div class"container">
   <div class="row">
     <div class="col-md-8 mx-auto pb-5 pl-5">
-      <h4 class="my-5"><%= @day.date.strftime("%Y年%m月%d日") %> のスケジュール</h4>
+      <h4 class="my-5"><%= @day.day.strftime("%Y年%m月%d日") %> のスケジュール</h4>
+
+      <%= render 'layouts/error', obj: @schedule %>
+
       <div>
         <div class="row mb-5 ml-5">
           <% @schedules.each do |schedule| %>
@@ -45,7 +48,7 @@
           </div>
           <div class="form_group">
             <%= f.label :費用, class: "col-md-4" %>
-            <%= f.text_field :cost, class: "col-md-4" %> 円
+            <%= f.text_field :cost, :placeholder => "ない場合は0と記入", class: "col-md-4" %> 円
           </div>
           <div class="d-flex">
             <p class="col-md-4">そこまでの</p>
@@ -53,15 +56,15 @@
           </div>
           <div class="form_group">
             <%= f.label :移動手段, class: "col-md-4" %>
-            <%= f.select :transportation, Schedule.transportations.keys, {}, class: "col-md-4" %>
+            <%= f.select :transportation, Schedule.transportations.keys, { include_blank: '---' }, class: "col-md-4" %>
           </div>
           <div class="form_group">
             <%= f.label :移動時間, class: "col-md-4" %>
-            <%= f.text_field :transfer_time, class: "col-md-4" %> 分
+            <%= f.text_field :transfer_time, :placeholder => "ない場合は0と記入", class: "col-md-4" %> 分
           </div>
           <div class="form_group">
             <%= f.label :交通費, class: "col-md-4" %>
-            <%= f.text_field :expense, class: "col-md-4" %> 円
+            <%= f.text_field :expense, :placeholder => "ない場合は0と記入", class: "col-md-4" %> 円
           </div>
           <div class="form-group d-flex">
             <div class="col-md-4"></div>

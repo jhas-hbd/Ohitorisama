@@ -24,7 +24,7 @@
       <% @days.each do |day| %>
       <div>
         <p class="mt-5">
-          <%= day.date.strftime("%Y年%m月%d日") %>
+          <%= day.day.strftime("%Y年%m月%d日") %>
           <%= link_to "編集", edit_plan_day_path(@plan, day) %>
         </p>
         <div class="row">

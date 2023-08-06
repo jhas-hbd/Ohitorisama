@@ -12,6 +12,7 @@ class Plan < ApplicationRecord
   validates :budget, presence: true
   validates :main_vehicle, presence: true
   validates :title, presence: true
+  validates :impression, length: { maximum: 140 }
 
   enum prefecture:{
     北海道:0,青森県:1,岩手県:2,宮城県:3,秋田県:4,山形県:5,福島県:6,
