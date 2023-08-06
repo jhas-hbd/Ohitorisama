@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="col-md-8  text-center py-5">
+    <div class="col-md-8 text-center py-5">
 
       <div>
         <p>
@@ -36,13 +36,17 @@
           <%= @plan.main_vehicle %> |
           <%= @plan.budget %><br>
           <%= @plan.impression %><br>
-          <% @plan_tags.each do |tag| %>
-            <i class="fas fa-tag"></i>
-            <%= tag.name %>
-          <% end %>
           
-          <%= render 'public/bookmarks/bookmark', plan: @plan %>
-          
+          <div class="d-flex justify-content-center">
+            <% @plan_tags.each do |tag| %>
+              <i class="fas fa-tag"></i>
+              <%= tag.name %>
+            <% end %>
+            <div id="bookmark_buttons_<%= @plan.id %>">
+              <%= render 'public/bookmarks/bookmark', plan: @plan %>
+            </div>
+          </div>
+
         </p>
       </div>
 

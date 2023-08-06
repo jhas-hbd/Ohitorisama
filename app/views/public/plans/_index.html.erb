@@ -8,14 +8,18 @@
         【<%= plan.title %>】
       <% end %>
       <%= plan.prefecture %>
-      
-      <%= render 'public/bookmarks/bookmark', plan: plan %><br>
-      
-      <%= plan.impression %><br>
-      <% plan.tags.each do |tag| %>
-        <i class="fas fa-tag"></i>
-        <%= tag.name %><br>
-      <% end %>
+      <%= plan.impression %>
+
+      <div class="d-flex">
+        <% plan.tags.each do |tag| %>
+          <i class="fas fa-tag"></i>
+          <%= tag.name %><br>
+        <% end %>
+        <div id="bookmark_buttons_<%= plan.id %>">
+          <%= render 'public/bookmarks/bookmark', plan: plan %>
+        </div>
+      </div>
+
       <%= plan.created_at.strftime("%Y/%m/%d") %>
       <%= image_tag plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
     </div>
