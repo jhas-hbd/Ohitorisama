@@ -6,43 +6,43 @@
 
       <div class="ml-5">
         <%= form_with model: [@plan, @day, @schedule], method: :patch do |f| %>
-          <div class="form_group">
-            <%= f.label :開始時刻, class: "col-md-4" %>
-            <%= f.time_select :start_at, {}, class: "col-md-2" %>
+          <div class="row">
+            <%= f.label :開始時刻, class: "col-md-4 mb-3" %>
+            <%= f.time_select :start_at, {}, class: "col-md-2 mb-3" %>
           </div>
-          <div class="form_group">
-            <%= f.label :終了時刻, class: "col-md-4" %>
-            <%= f.time_select :finished_at, {}, class: "col-md-2" %>
+          <div class="row">
+            <%= f.label :終了時刻, class: "col-md-4 mb-3" %>
+            <%= f.time_select :finished_at, {}, class: "col-md-2 mb-3" %>
           </div>
-          <div class="form_group">
-            <%= f.label :場所やイベント, class: "col-md-4" %>
-            <%= f.text_field :place, class: "col-md-4" %>
+          <div class="row">
+            <%= f.label :場所やイベント, class: "col-md-4 mb-3" %>
+            <%= f.text_field :place, class: "col-md-4 mb-3" %>
           </div>
-          <div class="form_group">
-            <%= f.label :コメント, class: "col-md-4" %>
-            <%= f.text_area :schedule_comment, class: "col-md-4" %>
+          <div class="row">
+            <%= f.label :コメント, class: "col-md-4 mb-3" %>
+            <%= f.text_area :schedule_comment, class: "col-md-4 mb-3" %>
           </div>
-          <div class="form_group">
-            <%= f.label :費用, class: "col-md-4" %>
-            <%= f.text_field :cost, :placeholder => "ない場合は0と記入", class: "col-md-4" %> 円
+          <div class="row">
+            <%= f.label :費用, class: "col-md-4 mb-3" %>
+            <%= f.text_field :cost, :placeholder => "ない場合は0と記入", class: "col-md-4 mb-3" %> 円
           </div>
-          <div class="d-flex">
+          <div class="row d-flex">
             <p class="col-md-4">そこまでの</p>
             <p class="col-md-4">-------------------------------------------</p>
           </div>
-          <div class="form_group">
-            <%= f.label :移動手段, class: "col-md-4" %>
-            <%= f.select :transportation, Schedule.transportations.keys, { include_blank: '---' }, class: "col-md-4" %>
+          <div class="row">
+            <%= f.label :移動手段, class: "col-md-4 mb-3" %>
+            <%= f.select :transportation, Schedule.transportations.keys, { include_blank: '---' }, class: "col-md-4 mb-3" %>
           </div>
-          <div class="form_group">
-            <%= f.label :移動時間, class: "col-md-4" %>
-            <%= f.text_field :transfer_time, :placeholder => "ない場合は0と記入", class: "col-md-4" %> 分
+          <div class="row">
+            <%= f.label :移動時間, class: "col-md-4 mb-3" %>
+            <%= f.text_field :transfer_time, :placeholder => "ない場合は0と記入", class: "col-md-4 mb-3" %> 分
           </div>
-          <div class="form_group">
-            <%= f.label :交通費, class: "col-md-4" %>
-            <%= f.text_field :expense, :placeholder => "ない場合は0と記入", class: "col-md-4" %> 円
+          <div class="row">
+            <%= f.label :交通費, class: "col-md-4 mb-3" %>
+            <%= f.text_field :expense, :placeholder => "ない場合は0と記入", class: "col-md-4 mb-3" %> 円
           </div>
-          <div class="form-group d-flex">
+          <div class="row d-flex">
             <div class="col-md-4"></div>
             <div class="col-md-4">
               <%= f.submit "確認画面", class: "btn btn-outline-dark mr-5 mt-5" %>
