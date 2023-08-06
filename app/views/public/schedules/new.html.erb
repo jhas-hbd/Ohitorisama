@@ -56,7 +56,7 @@
           </div>
           <div class="form_group">
             <%= f.label :移動手段, class: "col-md-4" %>
-            <%= f.select :transportation, Schedule.transportations.keys, { include_blank: '---' }, class: "col-md-4" %>
+            <%= f.select :transportation, options_for_select(Schedule.transportations.keys, selected: nil), { include_blank: '---' }, { class: "col-md-4" } %>
           </div>
           <div class="form_group">
             <%= f.label :移動時間, class: "col-md-4" %>

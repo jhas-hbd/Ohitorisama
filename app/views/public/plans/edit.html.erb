@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-md-8 mx-auto pb-5 pl-5">
       <h4 class="my-5">プラン編集</h4>
-      
+
       <%= render 'layouts/error', obj: @plan %>
-      
+
       <div class="ml-5">
       <%= form_with model: @plan, method: :patch do |f| %>
         <div class="form_group">

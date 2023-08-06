@@ -9,9 +9,11 @@ class Public::SchedulesController < ApplicationController
   end
 
   def create
-    day = Day.find(params[:day_id])
+    @plan = Plan.find(params[:plan_id])
+    @day = Day.find(params[:day_id])
+    @schedules = @day.schedules
     @schedule = Schedule.new(schedule_params)
-    @schedule.day_id = day.id
+    @schedule.day_id = @day.id
     if @schedule.save
       redirect_to request.referer
     else
