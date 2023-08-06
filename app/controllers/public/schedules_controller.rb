@@ -1,4 +1,6 @@
 class Public::SchedulesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @schedule = Schedule.new
     @day = Day.find(params[:day_id])
@@ -7,11 +9,16 @@ class Public::SchedulesController < ApplicationController
   end
 
   def create
-    day = Day.find(params[:day_id])
+    @plan = Plan.find(params[:plan_id])
+    @day = Day.find(params[:day_id])
+    @schedules = @day.schedules
     @schedule = Schedule.new(schedule_params)
-    @schedule.day_id = day.id
-    @schedule.save
-    redirect_to request.referer
+    @schedule.day_id = @day.id
+    if @schedule.save
+      redirect_to request.referer
+    else
+      render :new
+    end
   end
 
   def edit
@@ -23,8 +30,11 @@ class Public::SchedulesController < ApplicationController
   def update
     plan = Plan.find(params[:plan_id])
     schedule = Schedule.find(params[:id])
-    schedule.update(schedule_params)
-    redirect_to check_plan_path(plan)
+    if schedule.update(schedule_params)
+      redirect_to check_plan_path(plan)
+    else
+      render :edit
+    end
   end
 
   def destroy

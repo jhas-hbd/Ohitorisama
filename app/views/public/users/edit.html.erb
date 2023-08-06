@@ -3,9 +3,11 @@
     <div class="col-md-8 mx-auto">
       <h4 class="my-5">ユーザー編集</h4>
 
+      <%= render 'layouts/error', obj: @user %>
+
       <%= form_with model: @user, url: user_path, method: :patch do |f| %>
-        <div class="d-flex mb-4 bg-secondary">
-          <%= image_tag @user.get_profile_image(200, 200), class: "rounded-circle mr-5" %>
+        <div class="d-flex mb-4">
+          <%= image_tag @user.get_profile_image, size: '200x200', class: "rounded-circle mr-5" %>
           <div class="form-group mt-5">
             <%= f.label :プロフィール画像 %>
             <%= f.file_field :profile_image, class: "form-control-file", accept: "image/*" %>

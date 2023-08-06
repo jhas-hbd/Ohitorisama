@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: ユーザーネーム
+        introduction: 自己紹介
+      plan:
+        title: タイトル
+        prefecture: 都道府県
+        stay_days: 日付
+        budget: 予算
+        main_vehicle: 主な移動手段
+        impression: 感想
+      day:
+        day: 日付
+      schedule:
+        start_at: 開始時刻
+        finished_at: 終了時刻
+        place: 場所やイベント
+        schedule_comment: コメント
+        cost: 費用
+        transportation: 移動手段
+        transfer_time: 移動時間
+        expense: 交通費

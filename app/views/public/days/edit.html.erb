@@ -2,10 +2,13 @@
   <div class="row">
     <div class="col-md-6 mx-auto pb-5 pl-5">
       <h4 class="my-5">日にち入力</h4>
+
+      <%= render 'layouts/error', obj: @day %>
+
       <%= form_with model: [@plan, @day], method: :patch do |f| %>
         <div class="form_group">
           <%= f.label :日にち, class: "col-md-4" %>
-          <%= f.date_select :date, use_month_numbers: true, class: "col-md-4" %>
+          <%= f.date_select :day, use_month_numbers: true, class: "col-md-4" %>
         </div>
         <div class="form_group d-flex">
           <div class="col-md-4"></div>

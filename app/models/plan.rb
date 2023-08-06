@@ -7,42 +7,41 @@ class Plan < ApplicationRecord
   has_many :plan_tag_relations, dependent: :destroy
   has_many :tags, through: :plan_tag_relations, dependent: :destroy
 
+  validates :prefecture, presence: true
+  validates :stay_days, presence: true
+  validates :budget, presence: true
+  validates :main_vehicle, presence: true
+  validates :title, presence: true
+  validates :impression, length: { maximum: 140 }
+
   enum prefecture:{
-    都道府県:0,
-    北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
-    茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
-    新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
-    岐阜県:21,静岡県:22,愛知県:23,三重県:24,
-    滋賀県:25,京都府:26,大阪府:27,兵庫県:28,奈良県:29,和歌山県:30,
-    鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
-    徳島県:36,香川県:37,愛媛県:38,高知県:39,
-    福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
-    沖縄県:47
+    北海道:0,青森県:1,岩手県:2,宮城県:3,秋田県:4,山形県:5,福島県:6,
+    茨城県:7,栃木県:8,群馬県:9,埼玉県:10,千葉県:11,東京都:12,神奈川県:13,
+    新潟県:14,富山県:15,石川県:16,福井県:17,山梨県:18,長野県:19,
+    岐阜県:20,静岡県:21,愛知県:22,三重県:23,
+    滋賀県:24,京都府:25,大阪府:26,兵庫県:27,奈良県:28,和歌山県:29,
+    鳥取県:30,島根県:31,岡山県:32,広島県:33,山口県:34,
+    徳島県:35,香川県:36,愛媛県:37,高知県:38,
+    福岡県:39,佐賀県:40,長崎県:41,熊本県:42,大分県:43,宮崎県:44,鹿児島県:45,
+    沖縄県:46
   }
 
   enum stay_days:{
-    宿泊日数:0,
-    日帰り:1,一泊二日:2,二泊三日:3,三泊四日:4,四泊～:5
+    日帰り:0,一泊二日:1,二泊三日:2,三泊四日:3,四泊～:4
   }
 
   enum budget:{
-    予算:0,
-    "～1万":1,"1万～2万":2,"2万～3万":3,"3万～4万":4,"4万～5万":5,"5万～":6
+    "～1万":0,"1万～2万":1,"2万～3万":2,"3万～4万":3,"4万～5万":4,"5万～":5
   }
 
   enum main_vehicle:{
-    主な移動手段:0,
-    自動車:1,公共交通機関:2,それ以外:3
+    自動車:0,公共交通機関:1,それ以外:2
   }
 
   has_one_attached :plan_image
 
-  def get_plan_image(width, height)
-    unless plan_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      plan_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end
-    plan_image.variant(resize_to_limit: [width, height]).processed
+  def get_plan_image
+    (plan_image.attached?) ? plan_image : 'no_image.jpg'
   end
 
   def bookmarked_by?(user)

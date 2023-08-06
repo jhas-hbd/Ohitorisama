@@ -36,6 +36,8 @@ Rails.application.routes.draw do
         resources :schedules, except: [:show, :index]
       end
     end
+    get "search" => "searches#search"
+    get "tag_search" => "searches#tag_search"
   end
 
   #管理者側のルーティング設定
