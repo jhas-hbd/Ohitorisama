@@ -20,6 +20,10 @@
   color: #6c6b6b;
 }
 
+.field_with_errors {
+  display: contents;
+}
+
 /*Menuボタン*/
 .mypage-dropdown {
   display: none;
@@ -47,7 +51,7 @@
 }
 
 .mypage-dropdown a {
-  color: #5c3e26;
+  color: black;
   text-decoration: none;
 }
 
