@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'lion.jpg'
+    (profile_image.attached?) ? profile_image : 'user_image.jpg'
   end
 
   def user_status
