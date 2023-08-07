@@ -8,20 +8,18 @@
         【<%= plan.title %>】
       <% end %>
       <%= plan.prefecture %>
-      <% if plan.bookmarked_by?(current_user) %>
-        <%= link_to plan_bookmarks_path(plan), method: :delete, class: "ml-3" do %>
-          <i class="fas fa-bookmark"></i><%= plan.bookmarks.count %>
+      <%= plan.impression %>
+
+      <div class="d-flex">
+        <% plan.tags.each do |tag| %>
+          <i class="fas fa-tag"></i>
+          <%= tag.name %><br>
         <% end %>
-      <% else %>
-        <%= link_to plan_bookmarks_path(plan), method: :post, class: "ml-3" do %>
-          <i class="far fa-bookmark"></i><%= plan.bookmarks.count %>
-        <% end %>
-      <% end %><br>
-      <%= plan.impression %><br>
-      <% plan.tags.each do |tag| %>
-        <i class="fas fa-tag"></i>
-        <%= tag.name %><br>
-      <% end %>
+        <div id="bookmark_buttons_<%= plan.id %>">
+          <%= render 'public/bookmarks/bookmark', plan: plan %>
+        </div>
+      </div>
+
       <%= plan.created_at.strftime("%Y/%m/%d") %>
       <%= image_tag plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
     </div>

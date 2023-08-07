@@ -2,29 +2,15 @@
   <div class="row">
 
     <div class="col-md-2 py-5 offset-md-1">
-      <div>
-        <% @plan.comments.each do |comment| %>
-          <%= image_tag comment.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-          <%= comment.user.name %>
-          <%= comment.created_at.strftime('%Y/%m/%d') %>
-          <% if comment.user == current_user %>
-            <%= link_to plan_comment_path(@plan, comment), method: :delete do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-          <% end %>
-          <p class="pl-5"><%= comment.comment %></p>
-        <% end %>
+      <div id="comment">
+        <%= render 'public/comments/comment', plan: @plan %>
       </div>
-      <div class="text-right">
-        <%= form_with model: [@plan, @comment] do |f| %>
-          <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに", class: "w-100" %>
-          <%= f.submit "送信する", class: "btn btn-sm btn-dark text-white" %>
-        <% end %>
+      <div id="comment_form">
+        <%= render 'public/comments/form', {plan: @plan, comment: @comment} %>
       </div>
     </div>
 
-    <div class="col-md-8  text-center py-5">
-
+    <div class="col-md-8 text-center py-5">
       <div>
         <p>
           <%= @plan.title %>
@@ -36,19 +22,17 @@
           <%= @plan.main_vehicle %> |
           <%= @plan.budget %><br>
           <%= @plan.impression %><br>
-          <% @plan_tags.each do |tag| %>
-            <i class="fas fa-tag"></i>
-            <%= tag.name %>
-          <% end %>
-          <% if @plan.bookmarked_by?(current_user) %>
-            <%= link_to plan_bookmarks_path(@plan), method: :delete, class: "ml-3" do %>
-              <i class="fas fa-bookmark"></i><%= @plan.bookmarks.count %>
+
+          <div class="d-flex justify-content-center">
+            <% @plan_tags.each do |tag| %>
+              <i class="fas fa-tag"></i>
+              <%= tag.name %>
             <% end %>
-          <% else %>
-            <%= link_to plan_bookmarks_path(@plan), method: :post, class: "ml-3" do %>
-              <i class="far fa-bookmark"></i><%= @plan.bookmarks.count %>
-            <% end %>
-          <% end %>
+            <div id="bookmark_buttons_<%= @plan.id %>">
+              <%= render 'public/bookmarks/bookmark', plan: @plan %>
+            </div>
+          </div>
+
         </p>
       </div>
 
