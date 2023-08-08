@@ -1,5 +1,6 @@
 class Public::PlansController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:check, :edit, :update]
 
   def new
     @plan = Plan.new
@@ -25,6 +26,7 @@ class Public::PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+    # .orders(date: :asc)
     @days = @plan.days
     @comment = Comment.new
     @plan_tags = @plan.tags
@@ -62,4 +64,13 @@ class Public::PlansController < ApplicationController
   def plan_params
     params.require(:plan).permit(:title, :prefecture, :stay_days, :budget, :main_vehicle, :impression, :plan_image)
   end
+
+  def is_matching_login_user
+    plan = Plan.find(params[:id])
+    user = plan.user
+    unless user.id == current_user.id
+      redirect_to plans_path
+    end
+  end
+
 end

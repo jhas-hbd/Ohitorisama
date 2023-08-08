@@ -1,3 +1,122 @@
 @use '~bootstrap/scss/bootstrap';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+main, header {
+  background-color: #e6e3dd;
+}
+
+.top header {
+  background-color: transparent;
+}
+
+/*リンクの色*/
+.link {
+  color: gray;
+}
+
+/*エラーメッセージのずれ修正*/
+.field_with_errors {
+  display: contents;
+}
+
+/*Menuボタン*/
+.mypage-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 26px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+.mypage-dropdown.active {
+  display: block;
+}
+
+.mypage-btn-container {
+  position: relative;
+}
+
+.mypage-btn-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mypage-dropdown a {
+  color: black;
+  text-decoration: none;
+}
+
+.mypage-dropdown a:hover {
+  color: black;
+}
+
+.category-container:hover {
+  cursor: pointer;
+}
+
+//homes
+
+.top {
+  background-image: url("../images/wood.jpg");
+  height: 800px;
+  background-size: cover;
+}
+
+//plans
+
+.index {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post {
+  width: 300px;
+  height: 400px;
+  margin: 10px 10px 30px 10px;
+  border: 1px solid #e6e3dd;
+  border-radius: 10px;
+}
+
+.post:nth-child(3n) {
+  margin-right: 0px;
+}
+
+.plan_image {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.title {
+  height: 30px;
+  line-height: 30px;
+}
+
+.impression {
+  height: 80px;
+}
+
+.icons, .fas, .user {
+  height: 40px;
+  line-height: 40px;
+}
+
+.impression, .icons, .user {
+  width: 290px;
+  margin: 0 auto;
+}
+
+.user {
+  text-align: right;
+  margin-bottom: 10px;
+}
 

@@ -5,7 +5,7 @@
         <li>
           <div class="mypage-btn-container" id="mypageBtnContainer">
             <button class="btn btn-lg mx-3" style="background-color: white; color: gray;">Menu</button>
-            <div class="mypage-dropdown" id="mypageDropdown">
+            <div class="mypage-dropdown" id="mypageDropdown" onclick="event.stopPropagation()">
               <ul>
                 <% if admin_signed_in? %>
                   <% if request.fullpath.include? "/admin" %>
@@ -75,6 +75,9 @@
                   </li>
                   <li>
                     <%= link_to "管理者ログイン", new_admin_session_path %>
+                  </li>
+                  <li>
+                    <%= link_to 'ゲストログイン（ユーザー用）', users_guest_sign_in_path, method: :post %>
                   </li>
                 <% end %>
               </ul>

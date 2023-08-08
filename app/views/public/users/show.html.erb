@@ -37,7 +37,11 @@
                 <% end %>
               <% end %>
             <% else %>
-              <%= link_to "編集", edit_user_path, class: "btn btn-sm btn-outline-dark ml-5", style: "color: black;" %>
+              <% if current_user.guest_user? %>
+                <p>編集不可</p>
+              <% else %>
+                <%= link_to "編集", edit_user_path, class: "btn btn-sm btn-outline-dark ml-5", style: "color: black;" %>
+              <% end %>
             <% end %>
           </div>
         </div>

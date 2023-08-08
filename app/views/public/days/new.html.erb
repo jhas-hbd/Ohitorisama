@@ -1,6 +1,16 @@
 <div class"container">
   <div class="row">
     <div class="col-md-6 mx-auto pb-5 pl-5">
+      <h4>現在の日程</h4>
+      <div>
+        <% if @plan.days.any? %>
+          <% @plan.days.order(day: :asc).each do |day| %>
+            <%= day.day %>
+          <% end %>
+        <% else %>
+          <p>no-data</p>
+        <% end %>
+      </div>
       <h4 class="my-5">日にち入力</h4>
 
       <%= render 'layouts/error', obj: @day %>

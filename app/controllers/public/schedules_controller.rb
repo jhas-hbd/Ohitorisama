@@ -1,5 +1,6 @@
 class Public::SchedulesController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
     @schedule = Schedule.new
@@ -49,6 +50,14 @@ class Public::SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(:start_at, :finished_at, :place, :schedule_comment, :cost, :transportation, :transfer_time, :expense)
+  end
+
+  def is_matching_login_user
+    plan = Plan.find(params[:plan_id])
+    user = plan.user
+    unless user.id == current_user.id
+      redirect_to plans_path
+    end
   end
 
 end
