@@ -19,13 +19,13 @@ class Public::PlansController < ApplicationController
 
   def check
     @plan = Plan.find(params[:id])
-    @days = @plan.days.order(date: :asc)
+    @days = @plan.days
     @plan_tags = @plan.tags
   end
 
   def show
     @plan = Plan.find(params[:id])
-    @days = @plan.days.order(date: :asc)
+    @days = @plan.days
     @comment = Comment.new
     @plan_tags = @plan.tags
   end

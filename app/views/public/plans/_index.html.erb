@@ -1,13 +1,15 @@
 <div class="index">
   <% plans.each do |plan| %>
-  <div class="post">
+  <div class="post shadow-lg">
     <div>
-      <%= image_tag plan.get_plan_image, size: '300x200', class: "plan_image" %>
+      <%= link_to plan_path(plan) do %>
+        <%= image_tag plan.get_plan_image, size: '300x200', class: "plan_image" %>
+      <% end %>
     </div>
-    <div>
+    <div class="text">
       <div class="title">
         <strong>
-          <%= link_to plan_path(plan) do %>
+          <%= link_to plan_path(plan), class: "link" do %>
             【<%= plan.title %>】
           <% end %>
         </strong>

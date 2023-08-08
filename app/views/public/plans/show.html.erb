@@ -12,9 +12,9 @@
 
     <div class="col-md-8 text-center py-5">
       <div>
-        <p>
+        <h4>
           <%= @plan.title %>
-        </p>
+        </h4>
         <%= image_tag @plan.get_plan_image, size: '400x300' %>
         <p>
           <%= @plan.prefecture %> |
@@ -24,10 +24,12 @@
           <%= @plan.impression %><br>
 
           <div class="d-flex justify-content-center">
-            <% @plan_tags.each do |tag| %>
-              <i class="fas fa-tag"></i>
-              <%= tag.name %>
-            <% end %>
+            <div>
+              <% @plan_tags.each do |tag| %>
+                <i class="fas fa-tag"></i>
+                <%= tag.name %>
+              <% end %>
+            </div>
             <div id="bookmark_buttons_<%= @plan.id %>">
               <%= render 'public/bookmarks/bookmark', plan: @plan %>
             </div>

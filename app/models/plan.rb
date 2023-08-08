@@ -14,6 +14,8 @@ class Plan < ApplicationRecord
   validates :title, presence: true
   validates :impression, length: { maximum: 140 }
 
+  Plan.includes(:day).order("days.day ASC")
+
   enum prefecture:{
     北海道:0,青森県:1,岩手県:2,宮城県:3,秋田県:4,山形県:5,福島県:6,
     茨城県:7,栃木県:8,群馬県:9,埼玉県:10,千葉県:11,東京都:12,神奈川県:13,
@@ -41,7 +43,7 @@ class Plan < ApplicationRecord
   has_one_attached :plan_image
 
   def get_plan_image
-    (plan_image.attached?) ? plan_image : 'no_image.jpg'
+    (plan_image.attached?) ? plan_image : 'no_plan.jpg'
   end
 
   def bookmarked_by?(user)
