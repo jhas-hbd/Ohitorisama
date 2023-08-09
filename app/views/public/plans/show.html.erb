@@ -49,13 +49,13 @@
         <div class="col-md-3">そこまでの移動</div>
       </div>
 
-      <% @days.each do |day| %>
+      <% @days.order(day: :asc).each do |day| %>
       <div>
         <p>
           <%= day.day.strftime("%Y年%m月%d日") %>
         </p>
         <div class="row mb-5">
-          <% day.schedules.each do |schedule| %>
+          <% day.schedules.order(start_at: :asc).each do |schedule| %>
           <div class="col-md-3">
             <%= schedule.start_at.strftime('%H:%M') %> ~
             <%= schedule.finished_at.strftime('%H:%M') %>

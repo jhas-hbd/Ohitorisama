@@ -3,9 +3,9 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mx-5 d-flex ml-auto">
         <li>
-          <div class="mypage-btn-container" id="mypageBtnContainer">
+          <div class="menu-btn-container" id="menuBtnContainer">
             <button class="btn btn-lg mx-3" style="background-color: white; color: gray;">Menu</button>
-            <div class="mypage-dropdown" id="mypageDropdown" onclick="event.stopPropagation()">
+            <div class="menu-dropdown" id="menuDropdown" onclick="event.stopPropagation()">
               <ul>
                 <% if admin_signed_in? %>
                   <% if request.fullpath.include? "/admin" %>

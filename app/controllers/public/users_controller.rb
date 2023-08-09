@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @plans = @user.plans.order(created_at: :desc)
+    @plans = @user.plans.page(params[:page]).order(created_at: :desc)
   end
 
   def edit

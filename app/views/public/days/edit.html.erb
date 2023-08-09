@@ -1,5 +1,4 @@
 <div class="container">
-  <%= link_to "スケジュールの追加",  new_plan_day_schedule_path(@plan, @day), class: "btn btn-primary" %>
   <% @day.schedules.order(start_at: :asc).each do |schedule| %>
     <div class="row">
       <div class="col-md-3">
@@ -21,7 +20,9 @@
       </div>
     </div>
   <% end %>
-
+  <div class="row mt-3">
+    <%= link_to "スケジュールの追加", new_plan_day_schedule_path(@plan, @day), class: "btn btn-primary mx-auto" %>
+  </div>
   <div class="row">
     <div class="col-md-6 mx-auto pb-5 pl-5">
 
@@ -34,12 +35,9 @@
           <%= f.label :日にち, class: "col-md-4" %>
           <%= f.date_select :day, use_month_numbers: true, class: "col-md-4" %>
         </div>
-        <div class="form_group d-flex">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <%= f.submit "確認画面", class: "btn btn-outline-dark mt-5 mr-5" %>
-            <%= link_to "削除", plan_day_path(@plan, @day), method: :delete, class: "btn btn-sm btn-outline-danger mt-5 ml-3" %>
-          </div>
+        <div class="form_group d-flex justify-content-center">
+            <%= f.submit "変更を保存", class: "btn btn-outline-dark btn-sm mt-5 mr-5" %>
+            <%= link_to "削除", plan_day_path(@plan, @day), method: :delete, class: "btn btn-sm btn-outline-danger mt-5 ml-5" %>
         </div>
       <% end %>
     </div>

@@ -2,31 +2,30 @@
   <div class="row">
     <div class="col">
       <h4 class="my-5">コメント一覧</h4>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>コメントID</th>
-            <th>ユーザーネーム</th>
-            <th>コメント内容</th>
-            <th>コメントしたプラン</th>
-          </tr>
-        </thead>
-        <% @comments.each do |comment| %>
-          <tr>
-            <td><%= comment.id %></td>
-            <td><%= comment.user.name %></td>
-            <td>
-              <%= comment.comment %><br>
-              <%= link_to "削除", admin_plan_comment_path(comment.plan_id, comment), method: :delete %>
-            </td>
-            <td>
-              <%= link_to admin_plan_path(comment.plan) do %>
-                <%= comment.plan.title %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+      <div class="row">
+        <div class="col-md-3 text-center">コメントID</div>
+        <div class="col-md-3 text-center">ユーザーネーム</div>
+        <div class="col-md-3 text-center">コメント内容</div>
+        <div class="col-md-3 text-center">コメントしたプラン</div>
+      </div>
+      <% @comments.each do |comment| %>
+        <div class="row my-4">
+          <div class="col-md-3 text-center"><%= comment.id %></div>
+          <div class="col-md-3 text-center"><%= comment.user.name %></div>
+          <div class="col-md-3 text-center">
+            <%= comment.comment %><br>
+            <%= link_to "削除", admin_plan_comment_path(comment.plan_id, comment), method: :delete %>
+          </div>
+          <div class="col-md-3 text-center">
+            <%= link_to admin_plan_path(comment.plan) do %>
+              <%= comment.plan.title %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="row justify-content-center my-5">
+        <%= paginate @comments %>
+      </div>
     </div>
   </div>
 </div>

@@ -26,7 +26,6 @@ class Public::PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
-    # .orders(date: :asc)
     @days = @plan.days
     @comment = Comment.new
     @plan_tags = @plan.tags
@@ -49,7 +48,7 @@ class Public::PlansController < ApplicationController
   end
 
   def index
-    @plans = Plan.all.order(created_at: :desc)
+    @plans = Plan.page(params[:page]).order(created_at: :desc)
   end
 
   def destroy

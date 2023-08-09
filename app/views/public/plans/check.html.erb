@@ -21,7 +21,7 @@
         </p>
       </div>
       <%= link_to "日程を追加", new_plan_day_path(@plan), class: "btn btn-primary" %>
-      <% @days.each do |day| %>
+      <% @days.order(day: :asc).each do |day| %>
       <div>
         <p class="mt-5">
           <%= day.day.strftime("%Y年%m月%d日") %>

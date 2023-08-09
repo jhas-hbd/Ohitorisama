@@ -7,7 +7,7 @@
 
       <div>
         <div class="row mb-5 ml-5">
-          <% @schedules.each do |schedule| %>
+          <% @schedules.order(start_at: :asc).each do |schedule| %>
           <div class="col-md-3">
             <%= schedule.start_at.strftime('%H:%M') %> ~
             <%= schedule.finished_at.strftime('%H:%M') %>

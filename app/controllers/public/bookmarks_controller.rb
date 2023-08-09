@@ -13,9 +13,4 @@ class Public::BookmarksController < ApplicationController
     bookmark.destroy
   end
 
-  def index
-    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:plan_id)
-    @bookmark_list = Plan.find(bookmarks)
-  end
-
 end

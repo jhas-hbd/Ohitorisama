@@ -2,7 +2,7 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    @plans = Plan.all
+    @plans = Plan.page(params[:page]).order(created_at: :desc)
     @plans = @plans.where(prefecture: plan_params[:prefecture]) if plan_params[:prefecture].present?
     @plans = @plans.where(stay_days: plan_params[:stay_days]) if plan_params[:stay_days].present?
     @plans = @plans.where(budget: plan_params[:budget]) if plan_params[:budget].present?
@@ -11,9 +11,7 @@ class Public::SearchesController < ApplicationController
   end
 
   def tag_search
-    #tags = Tag.where('name LIKE(?)',"%#{tag_params[:tag_name]}%") 
-    
-    @plans = Plan.joins(:tags).where('tags.name LIKE(?)', "%#{tag_params[:tag_name]}%").distinct if tag_params[:tag_name].present?
+    @plans = Plan.joins(:tags).where('tags.name LIKE(?)', "%#{tag_params[:tag_name]}%").distinct.page(params[:page]).order(created_at: :desc) if tag_params[:tag_name].present?
   end
 
 

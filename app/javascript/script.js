@@ -1,12 +1,12 @@
 document.addEventListener('turbolinks:load', function() {
-　const mypageBtnContainer = document.getElementById('mypageBtnContainer');
-  const mypageDropdown = document.getElementById('mypageDropdown');
+　const menuBtnContainer = document.getElementById('menuBtnContainer');
+  const menuDropdown = document.getElementById('menuDropdown');
 
-  if (mypageBtnContainer) {
+  if (menuBtnContainer) {
     console.log("if")
-    mypageBtnContainer.addEventListener('click', function() {
+    menuBtnContainer.addEventListener('click', function() {
       console.log('click')
-      mypageDropdown.classList.toggle('active');
+      menuDropdown.classList.toggle('active');
     });
   }
 });
