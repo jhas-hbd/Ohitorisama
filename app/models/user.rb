@@ -52,6 +52,7 @@ class User < ApplicationRecord
     following_users.include?(user)
   end
 
+  # ゲストログイン用
   GUEST_USER_EMAIL = 'guest@example.com'
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|

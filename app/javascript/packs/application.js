@@ -8,12 +8,22 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "jquery";
-import "popper.js";
-import "bootstrap";
+import "jquery"
+import "popper.js"
+import "bootstrap"
 import "../stylesheets/application";
-import "script.js"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', function() {
+　const menuBtn = document.getElementById('menuBtn');
+  const menuDropdown = document.getElementById('menuDropdown');
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function() {
+      menuDropdown.classList.toggle('active');
+    });
+  }
+});

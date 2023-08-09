@@ -39,7 +39,7 @@ h1 {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: -100px;
   background-color: #fff;
   padding: 26px;
   border: 1px solid #007394;
@@ -55,6 +55,7 @@ h1 {
 }
 
 .menu-btn-container ul {
+  width: 230px;
   list-style: none;
   padding: 0;
   margin: 0;
