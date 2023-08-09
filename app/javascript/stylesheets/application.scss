@@ -8,13 +8,21 @@
 }
 
 main, header {
-  background-color: #e6e3dd;
+  background-color: #d5e5f2;
 }
 
 .top header {
   background-color: transparent;
 }
 
+// main {
+//   padding-bottom: 20%;
+// }
+
+// topの文字色
+h1 {
+  color: white;
+}
 
 /*リンクの色*/
 .link {
@@ -34,7 +42,7 @@ main, header {
   left: 0;
   background-color: #fff;
   padding: 26px;
-  border: 1px solid #ccc;
+  border: 1px solid #007394;
   z-index: 999;
 }
 
@@ -68,7 +76,7 @@ main, header {
 //homes
 
 .top {
-  background-image: url("../images/wood.jpg");
+  background-image: url("../images/chaire.jpg");
   height: 800px;
   background-size: cover;
 }
@@ -86,6 +94,7 @@ main, header {
   margin: 10px 10px 50px 10px;
   border: 1px solid #e6e3dd;
   border-radius: 10px;
+  background-color: white;
 }
 
 .post:nth-child(3n) {
@@ -120,4 +129,3 @@ main, header {
   text-align: right;
   margin-bottom: 10px;
 }
-

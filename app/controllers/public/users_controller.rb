@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
 
   def bookmark
     bookmarks = Bookmark.where(user_id: current_user.id).pluck(:plan_id)
-    @bookmark_list = Plan.find(bookmarks)
+    @bookmark_list = Plan.find(bookmarks).page(params[:page])
   end
 
   def unsubscribe
