@@ -11,7 +11,8 @@ class Public::SearchesController < ApplicationController
   end
 
   def tag_search
-    @plans = Plan.joins(:tags).where('tags.name LIKE(?)', "%#{tag_params[:tag_name]}%").distinct.page(params[:page]).order(created_at: :desc) if tag_params[:tag_name].present?
+    @plans = Plan.page(params[:page]).order(created_at: :desc)
+    @plans = @plans.joins(:tags).where('tags.name LIKE(?)', "%#{tag_params[:tag_name]}%").distinct.page(params[:page]) if tag_params[:tag_name].present?
   end
 
 

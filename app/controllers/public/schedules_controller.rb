@@ -6,12 +6,12 @@ class Public::SchedulesController < ApplicationController
     @schedule = Schedule.new
     @day = Day.find(params[:day_id])
     @schedules = @day.schedules
-    @plan = Plan.find(params[:plan_id])
+    @plan = @day.plan
   end
 
   def create
-    @plan = Plan.find(params[:plan_id])
     @day = Day.find(params[:day_id])
+    @plan = @day.plan
     @schedules = @day.schedules
     @schedule = Schedule.new(schedule_params)
     @schedule.day_id = @day.id
@@ -25,11 +25,13 @@ class Public::SchedulesController < ApplicationController
   def edit
     @schedule = Schedule.find(params[:id])
     @day = Day.find(params[:day_id])
-    @plan = Plan.find(params[:plan_id])
+    @plan = @day.plan
   end
 
   def update
-    plan = Plan.find(params[:plan_id])
+    day = Day.find(params[:day_id])
+    plan = day.plan
+
     schedule = Schedule.find(params[:id])
     if schedule.update(schedule_params)
       redirect_to check_plan_path(plan)
@@ -39,7 +41,9 @@ class Public::SchedulesController < ApplicationController
   end
 
   def destroy
-    plan = Plan.find(params[:plan_id])
+    day = Day.find(params[:day_id])
+    plan = day.plan
+
     schedule = Schedule.find(params[:id])
     schedule.destroy
     redirect_to check_plan_path(plan)
@@ -53,7 +57,9 @@ class Public::SchedulesController < ApplicationController
   end
 
   def is_matching_login_user
-    plan = Plan.find(params[:plan_id])
+    day = Day.find(params[:day_id])
+    plan = day.plan
+
     user = plan.user
     unless user.id == current_user.id
       redirect_to plans_path

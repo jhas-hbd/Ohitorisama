@@ -16,23 +16,23 @@
         <%= schedule.transportation %> |
         <%= schedule.transfer_time %> 分 |
         <%= schedule.expense %> 円 |
-        <%= link_to "編集", edit_plan_day_schedule_path(@plan, @day, schedule) %>
+        <%= link_to "編集", edit_day_schedule_path(@day, schedule) %>
       </div>
     </div>
   <% end %>
-  <div class="row mt-3">
-    <%= link_to "スケジュールの追加", new_plan_day_schedule_path(@plan, @day), class: "btn btn-primary mx-auto" %>
+  <div class="row pt-3">
+    <%= link_to "スケジュールの追加", new_day_schedule_path(@day), class: "btn btn-primary mx-auto" %>
   </div>
   <div class="row">
     <div class="col-md-6 mx-auto pb-5 pl-5">
 
-      <h4 class="my-5">日にち入力</h4>
+      <h4 class="my-5">日程入力</h4>
 
       <%= render 'layouts/error', obj: @day %>
 
       <%= form_with model: [@plan, @day], method: :patch do |f| %>
         <div class="form_group">
-          <%= f.label :日にち, class: "col-md-4" %>
+          <%= f.label :日程, class: "col-md-4" %>
           <%= f.date_select :day, use_month_numbers: true, class: "col-md-4" %>
         </div>
         <div class="form_group d-flex justify-content-center">

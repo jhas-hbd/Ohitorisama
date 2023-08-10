@@ -27,27 +27,27 @@
           <%= day.day.strftime("%Y年%m月%d日") %>
           <%= link_to "編集", edit_plan_day_path(@plan, day) %>
         </p>
-        <div class="row">
           <% day.schedules.order(start_at: :asc).each do |schedule| %>
-          <div class="col-md-3">
-            <%= schedule.start_at.strftime('%H:%M') %> ~
-            <%= schedule.finished_at.strftime('%H:%M') %>
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <%= schedule.start_at.strftime('%H:%M') %> ~
+              <%= schedule.finished_at.strftime('%H:%M') %>
+            </div>
+            <div class="col-md-3">
+              <%= schedule.place %> |
+              <%= schedule.cost %> 円
+            </div>
+            <div class="col-md-3">
+              <%= schedule.schedule_comment %>
+            </div>
+            <div class="col-md-3">
+              <%= schedule.transportation %> |
+              <%= schedule.transfer_time %> 分 |
+              <%= schedule.expense %> 円 |
+              <%= link_to "編集", edit_day_schedule_path(day, schedule) %>
+            </div>
           </div>
-          <div class="col-md-3">
-            <%= schedule.place %> |
-            <%= schedule.cost %> 円
-          </div>
-          <div class="col-md-3">
-            <%= schedule.schedule_comment %>
-          </div>
-          <div class="col-md-3">
-            <%= schedule.transportation %> |
-            <%= schedule.transfer_time %> 分 |
-            <%= schedule.expense %> 円 |
-            <%= link_to "編集", edit_plan_day_schedule_path(@plan, day, schedule) %>
-          </div>
-          <% end %>
-        </div>
+        <% end %>
       </div>
       <% end %>
 

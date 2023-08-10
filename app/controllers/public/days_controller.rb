@@ -12,7 +12,7 @@ class Public::DaysController < ApplicationController
     @day = Day.new(day_params)
     @day.plan_id = @plan.id
     if @day.save
-      redirect_to new_plan_day_schedule_path(@plan, @day)
+      redirect_to new_day_schedule_path(@day)
     else
       render :new
     end

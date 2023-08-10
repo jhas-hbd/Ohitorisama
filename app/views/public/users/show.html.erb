@@ -12,30 +12,22 @@
           </p>
 
           <div class="d-flex">
-            <p class="d-flex mr-3">
+            <div class="d-flex mr-3">
               フォロー：
-              <%= link_to user_follows_path(@user), style: "color: black;" do %>
-                <%= @user.followers.count %>
-              <% end %>
-            </p>
+              <p id="follows_count"><%= render 'public/relationships/follows', user: @user %></p>
+            </div>
 
-            <p class="d-flex mr-3">
+            <div class="d-flex mr-3">
               フォロワー：
-              <%= link_to user_followers_path(@user), style: "color: black;" do %>
-                <%= @user.followeds.count %>
-              <% end %>
-            </p>
+              <p id="followers_count"><%= render 'public/relationships/followers', user: @user %></p>
+            </div>
 
             <% if current_user != @user %>
-              <% if current_user.following?(@user) %>
-                <%= link_to user_relationships_path(@user.id), method: :delete do %>
-                  <i class="fas fa-user-times"></i>
-                <% end %>
-              <% else %>
-                <%= link_to user_relationships_path(@user.id), method: :post do %>
-                  <i class="fas fa-user-plus"></i>
-                <% end %>
-              <% end %>
+
+              <div id="follow_btn_<%= @user.id %>">
+                <%= render 'public/relationships/btn', user: @user %>
+              </div>
+
             <% else %>
               <% if current_user.guest_user? %>
                 <p>編集不可</p>
