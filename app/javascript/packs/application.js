@@ -14,16 +14,17 @@ import "bootstrap"
 import "../stylesheets/application";
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
-document.addEventListener('turbolinks:load', function() {
-　const menuBtn = document.getElementById('menuBtn');
-  const menuDropdown = document.getElementById('menuDropdown');
+$(function() {
+  $('.menu-bottom').click(function() {
+    $(this).toggleClass('active');
 
-  if (menuBtn) {
-    menuBtn.addEventListener('click', function() {
-      menuDropdown.classList.toggle('active');
-    });
-  }
+    if ($(this).hasClass('active')) {
+      $('.globalMenuSp').addClass('active');
+    } else {
+      $('.globalMenuSp').removeClass('active');
+    }
+  });
 });

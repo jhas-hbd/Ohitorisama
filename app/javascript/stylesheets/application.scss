@@ -1,4 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
 
 * {
   margin: 0;
@@ -12,7 +13,6 @@
 }
 
 // 画面の高さ
-
 body {
   width: 100%;
   height: 100vh;
@@ -24,53 +24,55 @@ body {
   color: gray;
 }
 
+h1 {
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
+
 /*エラーメッセージのずれ修正*/
 .field_with_errors {
   display: contents;
 }
 
 /*Menuボタン*/
-.menu-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: -100px;
-  background-color: #fff;
-  padding: 26px;
-  border: 1px solid #007394;
-  z-index: 999;
-}
-
-.menu-dropdown.active {
-  display: block;
-}
-
-.menu-btn-container {
-  position: relative;
-}
-
-.menu-btn-container ul {
-  width: 230px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-dropdown a {
-  color: black;
-  text-decoration: none;
-}
-
-.menu-dropdown a:hover {
-  color: black;
-}
-
-.category-container:hover {
+.menu-bottom {
   cursor: pointer;
+}
+/* ナビ開いてる時のボタン */
+.globalMenuSp {
+  position: fixed;
+  z-index : 2;
+  top : 90px;
+  right : 0;
+  color: #000;
+  background: #fff;
+  transform: translateX(100%);
+  transition: all 0.6s;
+  width: 20%;
+}
+
+.globalMenuSp ul {
+  background: #fff;
+  text-align: left;
+  padding: 0;
+  width: 100%;
+}
+
+.globalMenuSp ul li {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.globalMenuSp ul li:hover{
+  background : #5ab9c1;
+}
+
+/* このクラスを、jQueryで付与・削除する */
+.globalMenuSp.active {
+  transform: translateX(0%);
 }
 
 //homes
-
 .top {
   background-image: url("../images/chaire.jpg");
   height: 707px;
@@ -88,7 +90,6 @@ h1 {
 }
 
 //plans
-
 .index {
   display: flex;
   flex-wrap: wrap;

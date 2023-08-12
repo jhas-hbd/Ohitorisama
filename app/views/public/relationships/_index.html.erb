@@ -1,14 +1,18 @@
 <div class="col-md-5 mx-auto">
   <% users.each do |user| %>
-    <div class="d-flex mb-5">
+    <div class="d-flex mb-5" style="border: 1px solid; padding: 10px; border-radius: 10px;">
       <div>
         <%= link_to user_path(user) do %>
-          <%= image_tag user.get_profile_image, size: "150x150", class: "rounded-circle" %>
+          <%= image_tag user.get_profile_image, size: "100x100", class: "rounded-circle" %>
         <% end %>
       </div>
       <div class="ml-5 mt-3">
         <p style="font-size: 20px;"><%= user.name %></p>
-        <p style="font-size: 15px;"><%= user.introduction %></p>
+        <div class="d-flex">
+          <p style="font-size: 15px;">投稿数：<%= user.plans.count %> / </p>
+          <p style="font-size: 15px;">フォロー<%= user.followeds.count %> / </p>
+          <p style="font-size: 15px;">フォロワー：<%= user.followers.count %></p>
+        </div>
       </div>
     </div>
   <% end %>

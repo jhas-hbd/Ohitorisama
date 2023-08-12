@@ -1,5 +1,8 @@
 <div class="index">
   <% plans.each do |plan| %>
+
+
+
   <div class="post shadow-lg">
     <div>
       <%= link_to plan_path(plan) do %>
@@ -17,7 +20,11 @@
       </div>
 
       <div class="impression">
-        <%= plan.impression.truncate(50) %>
+        <% if plan.days.empty? %>
+          <P style="color: red;">日程が入力されていません。</p>
+        <% else %>
+          <%= plan.impression.truncate(50) %>
+        <% end %>
       </div>
 
       <div class="d-flex icons">
@@ -38,6 +45,9 @@
       </div>
     </div>
   </div>
+
+
+
   <% end %>
 </div>
 <div class="row justify-content-center mb-5">
