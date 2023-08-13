@@ -12,8 +12,14 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+   # ゲストログイン用
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   scope module: :public do
     root to: "homes#top"
+    get "about" => "homes#about"
     resources :users, only: [:show, :edit, :update] do
       member do
         get "unsubscribe"
@@ -32,10 +38,15 @@ Rails.application.routes.draw do
       end
       resources :comments, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
-      resources :days, except: [:show, :index]do
-        resources :schedules, except: [:show, :index]
-      end
+      resources :days, except: [:show, :index]
+        # resources :schedules, except: [:show, :index]
+      # end
     end
+
+    resources :days, except: [:show, :index] do
+      resources :schedules, except: [:show, :index]
+    end
+
     get "search" => "searches#search"
     get "tag_search" => "searches#tag_search"
   end

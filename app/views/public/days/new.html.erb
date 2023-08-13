@@ -1,13 +1,23 @@
 <div class"container">
-  <div class="row">
+  <div class="row pt-5">
     <div class="col-md-6 mx-auto pb-5 pl-5">
-      <h4 class="my-5">日にち入力</h4>
+      <h4>現在の日程</h4>
+      <div class="ml-5 mt-4">
+        <% if @plan.days.any? %>
+          <% @plan.days.order(day: :asc).each do |day| %>
+            <%= day.day %><br>
+          <% end %>
+        <% else %>
+          <p>日程はありません。</p>
+        <% end %>
+      </div>
+      <h4 class="my-5">日程入力</h4>
 
       <%= render 'layouts/error', obj: @day %>
 
       <%= form_with model: @day, url: plan_days_path do |f| %>
         <div class="form_group">
-          <%= f.label :日にち, class: "col-md-4" %>
+          <%= f.label :日程, class: "col-md-4" %>
           <%= f.date_select :day, use_month_numbers: true, class: "col-md-4" %>
         </div>
         <div class="form_group d-flex">

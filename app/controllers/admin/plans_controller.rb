@@ -2,7 +2,7 @@ class Admin::PlansController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @plans = Plan.all
+    @plans = Plan.page(params[:page]).per(10)
   end
 
   def show
@@ -13,11 +13,11 @@ class Admin::PlansController < ApplicationController
 
   def individual
     @user = User.find(params[:id])
-    @plans = @user.plans
+    @plans = @user.plans.page(params[:page]).per(10)
   end
 
   def comment
-    @comments = Comment.all
+    @comments = Comment.page(params[:page]).per(10)
   end
 
 end

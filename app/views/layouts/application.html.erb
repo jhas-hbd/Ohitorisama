@@ -7,13 +7,15 @@
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/0303429eff.js" crossorigin="anonymous"></script>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= notice %>
-    <%= yield %>
+    <%= render 'layouts/header' unless (params[:controller] == 'public/homes' && params[:action] == 'top') %>
+    <main>
+      <%= notice %>
+      <%= yield %>
+    </main>
   </body>
 </html>

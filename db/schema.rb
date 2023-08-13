@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_06_022616) do
+ActiveRecord::Schema.define(version: 2023_08_05_001630) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2023_08_06_022616) do
   end
 
   create_table "days", force: :cascade do |t|
+    t.integer "plan_id", null: false
     t.date "day", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "plan_id", null: false
   end
 
   create_table "plan_tag_relations", force: :cascade do |t|
@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(version: 2023_08_06_022616) do
 
   create_table "schedules", force: :cascade do |t|
     t.integer "day_id", null: false
-    t.time "start_at", null: false
-    t.time "finished_at", null: false
+    t.datetime "start_at", null: false
+    t.datetime "finished_at", null: false
     t.string "place", null: false
     t.text "schedule_comment", null: false
     t.string "cost", null: false

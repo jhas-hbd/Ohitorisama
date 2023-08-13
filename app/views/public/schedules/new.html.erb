@@ -7,7 +7,7 @@
 
       <div>
         <div class="row mb-5 ml-5">
-          <% @schedules.each do |schedule| %>
+          <% @schedules.order(start_at: :asc).each do |schedule| %>
           <div class="col-md-3">
             <%= schedule.start_at.strftime('%H:%M') %> ~
             <%= schedule.finished_at.strftime('%H:%M') %>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="ml-5">
-        <%= form_with model: @schedule, url: plan_day_schedules_path do |f| %>
+        <%= form_with model: @schedule, url: day_schedules_path do |f| %>
           <div class="row">
             <%= f.label :開始時刻, class: "col-md-4 mb-3" %>
             <%= f.time_select :start_at, {}, class: "col-md-2 mb-3" %>
@@ -72,7 +72,7 @@
           </div>
         <% end %>
         <div>
-          <%= link_to "日程追加", new_plan_day_path %> |
+          <%= link_to "日程追加", new_plan_day_path(@plan) %> |
           <%= link_to "確認画面", check_plan_path(@plan) %>
         </div>
       </div>

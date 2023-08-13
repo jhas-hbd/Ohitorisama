@@ -1,31 +1,9 @@
 <div class"container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h4>ブックマーク一覧</h4>
+      <h4 class="my-5">ブックマーク一覧</h4>
       <% if @bookmark_list.present? %>
-        <% @bookmark_list.each do |plan| %>
-          <div>
-            <%= image_tag plan.get_plan_image, size: '300x200' %>
-          </div>
-          <div>
-            <%= link_to plan_path(plan) do %>
-              【<%= plan.title %>】
-            <% end %>
-            <%= plan.prefecture %>
-            <% if plan.bookmarked_by?(current_user) %>
-              <%= link_to plan_bookmarks_path(plan), method: :delete, class: "ml-3" do %>
-                <i class="fas fa-bookmark"></i><%= plan.bookmarks.count %>
-              <% end %>
-            <% else %>
-              <%= link_to plan_bookmarks_path(plan), method: :post, class: "ml-3" do %>
-                <i class="far fa-bookmark"></i><%= plan.bookmarks.count %>
-              <% end %>
-            <% end %><br>
-            <%= plan.impression %><br>
-            <%= plan.created_at.strftime("%Y/%m/%d") %>
-            <%= image_tag plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-          </div>
-        <% end %>
+        <%= render 'public/plans/index', plans: @bookmark_list %>
       <% else %>
         <p>ブックマークした投稿がありません。</p>
       <% end %>

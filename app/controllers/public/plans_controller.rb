@@ -1,5 +1,6 @@
 class Public::PlansController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:check, :edit, :update]
 
   def new
     @plan = Plan.new
@@ -11,7 +12,7 @@ class Public::PlansController < ApplicationController
     tag_list = params[:plan][:name].split(',')
     if @plan.save
       @plan.save_tags(tag_list)
-      redirect_to new_plan_day_path(@plan)
+      redirect_to new_plan_day_path(@plan), notice: "プランが投稿されました。"
     else
       render :new
     end
@@ -47,7 +48,7 @@ class Public::PlansController < ApplicationController
   end
 
   def index
-    @plans = Plan.all.order(created_at: :desc)
+    @plans = Plan.page(params[:page]).order(created_at: :desc)
   end
 
   def destroy
@@ -62,4 +63,13 @@ class Public::PlansController < ApplicationController
   def plan_params
     params.require(:plan).permit(:title, :prefecture, :stay_days, :budget, :main_vehicle, :impression, :plan_image)
   end
+
+  def is_matching_login_user
+    plan = Plan.find(params[:id])
+    user = plan.user
+    unless user.id == current_user.id
+      redirect_to plans_path
+    end
+  end
+
 end

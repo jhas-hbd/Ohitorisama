@@ -1,9 +1,10 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
 
   def show
     @user = User.find(params[:id])
-    @plans = @user.plans
+    @plans = @user.plans.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -21,7 +22,8 @@ class Public::UsersController < ApplicationController
 
   def bookmark
     bookmarks = Bookmark.where(user_id: current_user.id).pluck(:plan_id)
-    @bookmark_list = Plan.find(bookmarks)
+    bookmark_list = Plan.find(bookmarks)
+    @bookmark_list = Kaminari.paginate_array(bookmark_list).page(params[:page])
   end
 
   def unsubscribe
@@ -39,4 +41,11 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
+
+  def ensure_guest_user
+    if current_user.guest_user?
+      redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集できません。"
+    end
+  end
+
 end

@@ -1,87 +1,95 @@
 <header>
-  <nav class="navbar navbar-expand-lg py-4">
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mx-5 d-flex ml-auto">
-        <li>
-          <div class="mypage-btn-container" id="mypageBtnContainer">
-            <button class="btn btn-lg mx-3" style="background-color: black; color: white;">Menu</button>
-            <div class="mypage-dropdown" id="mypageDropdown">
-              <ul>
-                <% if admin_signed_in? %>
-                  <% if request.fullpath.include? "/admin" %>
-                    <li>
-                      <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
-                    </li>
-                    <li>
-                      <%= link_to "ユーザー一覧", admin_users_path %>
-                    </li>
-                    <li>
-                      <%= link_to "プラン一覧", admin_plans_path %>
-                    </li>
-                    <li>
-                      <%= link_to "コメント一覧", comment_admin_plans_path %>
-                    </li>
+
+
+  <nav class="navbar">
+    <a class="navbar-brand p-3" href="/"><%= image_tag '1.png', size: "190x90" %></a>
+    <div class="menu-bottom mr-5">
+      <button type="button" class="btn btn-info text-white">MENU</button>
+    </div>
+
+    <div class="globalMenuSp">
+      <ul>
+        <% if admin_signed_in? %>
+            <% if request.fullpath.include? "/admin" %>
+              <li>
+                <%= link_to '管理者ログアウト', destroy_admin_session_path, class: 'nav-link text-dark', method: :delete %>
+              </li>
+              <li>
+                <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark' %>
+              </li>
+              <li>
+                <%= link_to "プラン一覧", admin_plans_path, class: 'nav-link text-dark' %>
+              </li>
+              <li>
+                <%= link_to "コメント一覧", comment_admin_plans_path, class: 'nav-link text-dark' %>
+              </li>
+            <% end %>
+          <% elsif user_signed_in? %>
+            <li>
+              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "マイページ", user_path(current_user), class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "プラン", new_plan_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "プラン一覧", plans_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "ブックマーク一覧", bookmark_users_path, class: 'nav-link text-dark' %>
+            </li>
+            <div class="search_form">
+              <%= form_with url: search_path, local: true, method: :get do |f| %>
+                <li class="pl-3">
+                  絞り込み検索<br>
+                  <%= f.select :prefecture, Plan.prefectures.keys, { include_blank: '都道府県'} %>
+                  <%= f.select :stay_days, Plan.stay_days.keys, { include_blank: '宿泊日数'} %><br>
+                  <%= f.select :budget, Plan.budgets.keys, { include_blank: '予算'} %>
+                  <%= f.select :main_vehicle, Plan.main_vehicles.keys, { include_blank: '移動手段'} %><br>
+                  <%= f.text_field :key_word, :placeholder => "キーワード" %>
+                  <%= button_tag type: "submit", class: "btn btn-default" do %>
+                    <i class="fas fa-search"></i>
                   <% end %>
-                <% elsif user_signed_in? %>
-                  <li>
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                  </li>
-                  <li>
-                    <%= link_to "マイページ", user_path(current_user) %>
-                  </li>
-                  <li>
-                    <%= link_to "プラン", new_plan_path %>
-                  </li>
-                  <li>
-                    <%= link_to "プラン一覧", plans_path %>
-                  </li>
-                  <li>
-                    <%= link_to "ブックマーク一覧", bookmark_users_path %>
-                  </li>
-                  <div class="search_form">
-                    <%= form_with url: search_path, local: true, method: :get do |f| %>
-                      <li>
-                        絞り込み検索<br>
-                        <%= f.select :prefecture, Plan.prefectures.keys, { include_blank: '都道府県'} %>
-                        <%= f.select :stay_days, Plan.stay_days.keys, { include_blank: '宿泊日数'} %><br>
-                        <%= f.select :budget, Plan.budgets.keys, { include_blank: '予算'} %>
-                        <%= f.select :main_vehicle, Plan.main_vehicles.keys, { include_blank: '移動手段'} %><br>
-                        <%= f.text_field :key_word, :placeholder => "キーワード" %>
-                        <%= button_tag type: "submit", class: "btn btn-default" do %>
-                          <i class="fas fa-search"></i>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  </div>
-
-                  <div class="tag_search">
-                    <%= form_with url: tag_search_path, local: true, method: :get do |f| %>
-                      <li>
-                        タグ検索<br>
-                        <%= f.text_field :tag_name, :placeholder => "例）一人旅" %>
-                        <%= button_tag type: "submit", class: "btn btn-default" do %>
-                          <i class="fas fa-search"></i>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  </div>
-
-                <% else %>
-                  <li>
-                    <%= link_to "新規登録", new_user_registration_path %>
-                  </li>
-                  <li>
-                    <%= link_to "ログイン", new_user_session_path %>
-                  </li>
-                  <li>
-                    <%= link_to "管理者ログイン", new_admin_session_path %>
-                  </li>
-                <% end %>
-              </ul>
+                </li>
+              <% end %>
             </div>
-          </div>
-        </li>
+
+            <div class="tag_search">
+              <%= form_with url: tag_search_path, local: true, method: :get do |f| %>
+                <li class="pl-3">
+                  タグ検索<br>
+                  <%= f.text_field :tag_name, :placeholder => "例）一人旅" %>
+                  <%= button_tag type: "submit", class: "btn btn-default" do %>
+                    <i class="fas fa-search"></i>
+                  <% end %>
+                </li>
+              <% end %>
+            </div>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link text-dark', method: :delete %>
+            </li>
+
+          <% else %>
+            <li>
+              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "管理者ログイン", new_admin_session_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to 'ゲストログイン（ユーザー用）', users_guest_sign_in_path, class: 'nav-link text-dark', method: :post %>
+            </li>
+          <% end %>
       </ul>
     </div>
   </nav>
+
 </header>

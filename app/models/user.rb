@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'lion.jpg'
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
   def user_status
@@ -50,6 +50,19 @@ class User < ApplicationRecord
   # フォローしていればtrueを返す
   def following?(user)
     following_users.include?(user)
+  end
+
+  # ゲストログイン用
+  GUEST_USER_EMAIL = 'guest@example.com'
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+    end
+  end
+
+  def guest_user?
+    email == GUEST_USER_EMAIL
   end
 
 end
