@@ -1,0 +1,46 @@
+<div class="index">
+  <% plans.each do |plan| %>
+  <div class="post shadow-lg">
+    <div>
+      <%= link_to plan_path(plan) do %>
+        <%= image_tag plan.get_plan_image, size: '300x200', class: "plan_image" %>
+      <% end %>
+    </div>
+    <div class="text">
+      <div class="title">
+        <strong>
+          <%= link_to plan_path(plan), class: "link" do %>
+            【<%= plan.title %>】
+          <% end %>
+        </strong>
+        <%= plan.prefecture %>
+      </div>
+
+      <div class="impression">
+        <% if plan.days.empty? %>
+          <P style="color: red;">日程が入力されていません。</p>
+        <% else %>
+          <%= plan.impression.truncate(50) %>
+        <% end %>
+      </div>
+
+      <div class="d-flex icons">
+        <% plan.tags.each do |tag| %>
+          <i class="fas fa-tag"></i>
+          <%= tag.name %><br>
+        <% end %>
+        <p id="bookmark_buttons_<%= plan.id %>" class="ml-2">
+          <%= render 'public/bookmarks/bookmark', plan: plan %>
+        </p>
+      </div>
+
+      <div class="user">
+        <%= plan.created_at.strftime("%Y/%m/%d") %>
+        <%=link_to user_path(plan.user) do %>
+          <%= image_tag plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

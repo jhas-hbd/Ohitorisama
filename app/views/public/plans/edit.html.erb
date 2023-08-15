@@ -1,0 +1,53 @@
+<div class"container">
+  <div class="row">
+    <div class="col-md-8 col-10 mx-auto pb-5 pl-md-5">
+      <h4 class="my-5 text-center">プラン編集</h4>
+
+      <%= render 'layouts/error', obj: @plan %>
+
+      <div class="ml-md-5 text-center">
+      <%= form_with model: @plan, method: :patch do |f| %>
+        <div class="row">
+          <%= f.label :タイトル, class: "col-md-4 mb-3" %>
+          <%= f.text_field :title, class: "col-md-4 mb-3" %>
+        </div>
+        <div class="row">
+          <%= f.label :都道府県, class: "col-md-4 mb-3" %>
+          <%= f.select :prefecture, Plan.prefectures.keys, {}, class: "col-md-4 mb-3" %>
+        </div>
+        <div class="row">
+          <%= f.label :宿泊日数, class: "col-md-4 mb-3" %>
+          <%= f.select :stay_days, Plan.stay_days.keys, {}, class: "col-md-4 mb-3" %>
+        </div>
+        <div class="row">
+          <%= f.label :予算, class: "col-md-4 mb-3" %>
+          <%= f.select :budget, Plan.budgets.keys, {}, class: "col-md-4 mb-3" %>
+        </div>
+        <div class="row">
+          <%= f.label :主な移動手段, class: "col-md-4 mb-3" %>
+          <%= f.select :main_vehicle, Plan.main_vehicles.keys, {}, class: "col-md-4 mb-3" %>
+        </div>
+        <div class="row">
+          <%= f.label :感想, class: "col-md-4 mb-3" %>
+          <%= f.text_area :impression, class: "col-md-4 mb-3" %>
+        </div>
+        <div class="row d-flex">
+          <%= f.label :思い出の一枚, class: "col-md-4 mb-3" %>
+          <%= f.file_field :plan_image, class: "form-control-file col-md-4 mb-3", accept: "image/*" %>
+        </div>
+        <div class="row d-flex">
+          <label class="col-md-4 mb-3">タグ(,で複数タグ登録できます)</label>
+          <%= f.text_field :name,value: @tag_list, class: 'form-control col-md-4 mb-3' %>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <%= f.submit "変更を保存", class: "btn btn-outline-dark mt-5 mr-5" %>
+            <%= link_to "削除", plan_path(@plan), method: :delete, data: { confirm: "日付やスケジュールも消えますがよろしいですか？"}, class: "btn btn-sm btn-outline-danger mt-5 ml-5" %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

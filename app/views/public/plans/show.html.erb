@@ -1,0 +1,98 @@
+<div class"container">
+  <div class="row">
+
+    <div class="col-md-2 col-10 mx-auto py-5 offset-md-1">
+      <div id="comment">
+        <%= render 'public/comments/comment', plan: @plan %>
+      </div>
+      <div id="comment_form">
+        <%= render 'public/comments/form', {plan: @plan, comment: @comment} %>
+      </div>
+    </div>
+
+    <div class="col-md-8 text-center py-5">
+      <div>
+        <h4>
+          <%= @plan.title %>
+        </h4>
+        <%= image_tag @plan.get_plan_image, size: '400x300' %>
+        <p>
+          <%= @plan.prefecture %> |
+          <%= @plan.stay_days %> |
+          <%= @plan.main_vehicle %> |
+          <%= @plan.budget %><br>
+          <%= @plan.impression %><br>
+
+          <div class="d-flex justify-content-center">
+            <div>
+              <% @plan_tags.each do |tag| %>
+                <i class="fas fa-tag"></i>
+                <%= tag.name %>
+              <% end %>
+            </div>
+            <div id="bookmark_buttons_<%= @plan.id %>">
+              <%= render 'public/bookmarks/bookmark', plan: @plan %>
+            </div>
+            <div class="ml-2">
+              <%= @plan.created_at.strftime("%Y/%m/%d") %>
+              <%=link_to user_path(@plan.user) do %>
+                <%= image_tag @plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+              <% end %>
+            </div>
+          </div>
+
+        </p>
+      </div>
+
+      <div class="row my-5">
+        <div class="col-md-3 col-5 mx-auto">時間</div>
+        <div class="col-md-3 col-5 mx-auto">場合やイベント/費用</div>
+        <div class="col-md-3">メモ</div>
+        <div class="col-md-3">そこまでの移動</div>
+      </div>
+
+      <% @days.order(day: :asc).each do |day| %>
+      <div style="border-bottom: 1px solid;">
+        <p>
+          <%= day.day.strftime("%Y年%m月%d日") %>
+        </p>
+
+        <% if day.schedules.empty? %>
+          <P style="color: red;">スケジュールが入力されていません。</p>
+        <% else %>
+
+          <% day.schedules.order(start_at: :asc).each do |schedule| %>
+            <div class="row mb-3">
+              <div class="col-md-3 col-5 mx-auto">
+                <%= schedule.start_at.strftime('%H:%M') %> ~
+                <%= schedule.finished_at.strftime('%H:%M') %>
+              </div>
+              <div class="col-md-3 col-5 mx-auto">
+                <%= schedule.place %> |
+                <%= schedule.cost %> 円
+              </div>
+              <div class="col-md-3">
+                <%= schedule.schedule_comment %>
+              </div>
+              <div class="col-md-3">
+                <%= schedule.transportation %> |
+                <%= schedule.transfer_time %> 分 |
+                <%= schedule.expense %> 円
+              </div>
+            </div>
+          <% end %>
+
+        <% end %>
+
+      </div>
+      <% end %>
+
+      <div>
+        <% if @plan.user == current_user %>
+          <%= link_to "編集する", check_plan_path(@plan), class: "btn btn-dark text-white mt-5 " %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,191 @@
+@use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+.top header {
+  background-color: transparent;
+}
+
+// 画面の高さ
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #d5e5f2;
+}
+
+/*リンクの色*/
+.link {
+  color: gray;
+}
+
+/*エラーメッセージのずれ修正*/
+.field_with_errors {
+  display: contents;
+}
+
+/*Menuボタン*/
+.menu-bottom {
+  cursor: pointer;
+}
+/* ナビ開いてる時のボタン */
+.globalMenuSp {
+  position: fixed;
+  z-index : 2;
+  top : 90px;
+  right : 0;
+  color: #000;
+  background: #fff;
+  transform: translateX(100%);
+  transition: all 0.6s;
+  width: 20%;
+}
+
+.globalMenuSp ul {
+  background: #fff;
+  text-align: left;
+  padding: 0;
+  width: 100%;
+}
+
+.globalMenuSp ul li {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.globalMenuSp ul li:hover{
+  background : #5ab9c1;
+}
+
+/* このクラスを、jQueryで付与・削除する */
+.globalMenuSp.active {
+  transform: translateX(0%);
+}
+
+//homes
+.top {
+  background-image: url("../images/chaire.jpg");
+  height: 707px;
+  background-size: cover;
+}
+
+.top_text {
+  font-size: 45px;
+  color: white;
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+.main-function {
+  width: 80px;
+  margin: 0 auto;
+  border-bottom: 1px solid;
+}
+
+.sample-image {
+  display: flex;
+}
+
+.index-image {
+  margin-right: 150px;
+}
+
+//plans
+.index {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post {
+  width: 300px;
+  height: 400px;
+  margin: 10px 10px 50px 10px;
+  border: 1px solid #e6e3dd;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.post:nth-child(3n) {
+  margin-right: 0px;
+}
+
+.plan_image {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.title {
+  height: 30px;
+  line-height: 30px;
+}
+
+.impression {
+  height: 80px;
+}
+
+.icons, .fas, .user {
+  height: 40px;
+  line-height: 40px;
+}
+
+.impression, .icons, .user {
+  width: 290px;
+  margin: 0 auto;
+}
+
+.user {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+
+
+// メディアクエリ
+@media screen and (max-width: 1200px) {
+
+  // menuボタン
+  .globalMenuSp {
+    width: 70%;
+  }
+
+  // トップページ
+  .top {
+    background-image: url("../images/chaire.jpg");
+    background-size: cover;
+    background-position: right;
+  }
+
+  .top_text {
+    font-size: 25px;
+  }
+
+  // アバウトページ
+  .sample-image {
+    display: block;
+    justify-content: center;
+  }
+
+  .index-image {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+  // マイページ
+
+
+  // プラン一覧
+  .index {
+    display: flex;
+    justify-content: center;
+  }
+
+  .post:nth-child(3n) {
+    margin-right: 10px;
+  }
+
+}

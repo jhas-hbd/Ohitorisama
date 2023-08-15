@@ -1,0 +1,81 @@
+<div class"container">
+  <div class="row">
+    <div class="col-md-8 col-10 mx-auto pb-5 pl-md-5">
+      <h4 class="my-5"><%= @day.day.strftime("%Y年%m月%d日") %> のスケジュール</h4>
+
+      <%= render 'layouts/error', obj: @schedule %>
+
+
+
+      <% @schedules.order(start_at: :asc).each do |schedule| %>
+      <div class="row ml-md-5 mb-5 mx-auto" style="border-bottom: 1px solid;">
+        <div class="col-md-3 col-5 text-center">
+          <%= schedule.start_at.strftime('%H:%M') %> ~
+          <%= schedule.finished_at.strftime('%H:%M') %>
+        </div>
+        <div class="col-md-3 col-5 text-center">
+          <%= schedule.place %> |
+          <%= schedule.cost %>円
+        </div>
+        <div class="col-md-3 col-10 text-center">
+          <%= schedule.schedule_comment %>
+        </div>
+        <div class="col-md-3 col-10 text-center">
+          <%= schedule.transportation %> |
+          <%= schedule.transfer_time %>分 |
+          <%= schedule.expense %>円
+        </div>
+      </div>
+      <% end %>
+
+
+      <div class="ml-md-5">
+        <%= form_with model: @schedule, url: day_schedules_path do |f| %>
+          <div class="row">
+            <%= f.label :開始時刻, class: "col-md-4 mb-3" %>
+            <%= f.time_select :start_at, {}, class: "col-md-2 col-5 mb-3" %>
+          </div>
+          <div class="row">
+            <%= f.label :終了時刻, class: "col-md-4 mb-3" %>
+            <%= f.time_select :finished_at, {}, class: "col-md-2 col-5 mb-3" %>
+          </div>
+          <div class="row">
+            <%= f.label :場所やイベント, class: "col-md-4 mb-3" %>
+            <%= f.text_field :place, class: "col-md-4 mb-3" %>
+          </div>
+          <div class="row">
+            <%= f.label :コメント, class: "col-md-4 mb-3" %>
+            <%= f.text_area :schedule_comment, class: "col-md-4 mb-3" %>
+          </div>
+          <div class="row">
+            <%= f.label :費用, class: "col-md-4 mb-3" %>
+            <%= f.text_field :cost, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 円
+          </div>
+          <div class="row d-flex">
+            <p class="col-md-4">そこまでの</p>
+            <p class="col-md-4">-------------------------------------------</p>
+          </div>
+          <div class="row">
+            <%= f.label :移動手段, class: "col-md-4 mb-3" %>
+            <%= f.select :transportation, options_for_select(Schedule.transportations.keys, selected: nil), { include_blank: '---' }, { class: "col-md-4 col-6 mb-3" } %>
+          </div>
+          <div class="row">
+            <%= f.label :移動時間, class: "col-md-4 mb-3" %>
+            <%= f.text_field :transfer_time, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 分
+          </div>
+          <div class="row">
+            <%= f.label :交通費, class: "col-md-4 mb-3" %>
+            <%= f.text_field :expense, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 円
+          </div>
+          <div class="row">
+            <%= f.submit "スケジュール作成", class: "btn btn-outline-dark mx-auto mt-5" %>
+          </div>
+        <% end %>
+        <div class="text-center mt-3">
+          <%= link_to "日程追加", new_plan_day_path(@plan) %> |
+          <%= link_to "確認画面", check_plan_path(@plan) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
