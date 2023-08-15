@@ -12,7 +12,7 @@ class Public::PlansController < ApplicationController
     tag_list = params[:plan][:name].split(',')
     if @plan.save
       @plan.save_tags(tag_list)
-      redirect_to new_plan_day_path(@plan), notice: "プランが投稿されました。"
+      redirect_to new_plan_day_path(@plan)
     else
       render :new
     end
