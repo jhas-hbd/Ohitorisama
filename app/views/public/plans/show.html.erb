@@ -1,7 +1,7 @@
 <div class"container">
   <div class="row">
 
-    <div class="col-md-2 py-5 offset-md-1">
+    <div class="col-md-2 col-10 mx-auto py-5 offset-md-1">
       <div id="comment">
         <%= render 'public/comments/comment', plan: @plan %>
       </div>
@@ -32,6 +32,8 @@
             </div>
             <div id="bookmark_buttons_<%= @plan.id %>">
               <%= render 'public/bookmarks/bookmark', plan: @plan %>
+            </div>
+            <div class="ml-2">
               <%= @plan.created_at.strftime("%Y/%m/%d") %>
               <%=link_to user_path(@plan.user) do %>
                 <%= image_tag @plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
@@ -43,14 +45,14 @@
       </div>
 
       <div class="row my-5">
-        <div class="col-md-3">時間</div>
-        <div class="col-md-3">場合やイベント/費用</div>
+        <div class="col-md-3 col-5 mx-auto">時間</div>
+        <div class="col-md-3 col-5 mx-auto">場合やイベント/費用</div>
         <div class="col-md-3">メモ</div>
         <div class="col-md-3">そこまでの移動</div>
       </div>
 
       <% @days.order(day: :asc).each do |day| %>
-      <div>
+      <div style="border-bottom: 1px solid;">
         <p>
           <%= day.day.strftime("%Y年%m月%d日") %>
         </p>
@@ -61,11 +63,11 @@
 
           <% day.schedules.order(start_at: :asc).each do |schedule| %>
             <div class="row mb-3">
-              <div class="col-md-3">
+              <div class="col-md-3 col-5 mx-auto">
                 <%= schedule.start_at.strftime('%H:%M') %> ~
                 <%= schedule.finished_at.strftime('%H:%M') %>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 col-5 mx-auto">
                 <%= schedule.place %> |
                 <%= schedule.cost %> 円
               </div>

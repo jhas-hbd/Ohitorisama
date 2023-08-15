@@ -1,8 +1,11 @@
 <div class"container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h4 class="my-5">プラン一覧</h4>
+      <h4 class="my-5 text-center">プラン一覧</h4>
       <%= render "index", plans: @plans %>
+      <div class="row justify-content-center mb-5">
+        <%= paginate @plans %>
+      </div>
     </div>
   </div>
 </div>

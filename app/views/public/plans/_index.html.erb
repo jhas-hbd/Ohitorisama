@@ -1,8 +1,5 @@
 <div class="index">
   <% plans.each do |plan| %>
-
-
-
   <div class="post shadow-lg">
     <div>
       <%= link_to plan_path(plan) do %>
@@ -45,11 +42,5 @@
       </div>
     </div>
   </div>
-
-
-
   <% end %>
-</div>
-<div class="row justify-content-center mb-5">
-  <%= paginate plans %>
 </div>

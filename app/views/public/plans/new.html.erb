@@ -1,11 +1,11 @@
 <div class"container">
   <div class="row">
-    <div class="col-md-8 mx-auto pb-5 pl-5">
-      <h4 class="my-5">プラン入力</h4>
+    <div class="col-md-8 col-10 mx-auto pb-5 pl-md-5">
+      <h4 class="my-5 text-center">プラン入力</h4>
 
       <%= render 'layouts/error', obj: @plan %>
 
-      <div class="ml-5">
+      <div class="ml-md-5 text-center">
       <%= form_with model: @plan, method: :post do |f| %>
         <div class="row">
           <%= f.label :タイトル, class: "col-md-4 mb-3" %>
@@ -40,8 +40,7 @@
           <%= f.text_field :name, value: @tag_list, class: 'form-control col-md-4 mb-3' %>
         </div>
         <div class="row d-flex">
-          <div class="col-md-4"></div>
-          <%= f.submit "日程入力", class: "btn btn-outline-dark mt-5" %>
+          <%= f.submit "日程入力", class: "btn btn-outline-dark mt-5 mx-auto" %>
         </div>
       <% end %>
       </div>

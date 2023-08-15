@@ -1,8 +1,8 @@
 <div class"container">
   <div class="row pt-5">
-    <div class="col-md-6 mx-auto pb-5 pl-5">
+    <div class="col-md-4 col-10 mx-auto pb-5 ml-5">
       <h4>現在の日程</h4>
-      <div class="ml-5 mt-4">
+      <div class="ml-md-5 mt-4">
         <% if @plan.days.any? %>
           <% @plan.days.order(day: :asc).each do |day| %>
             <%= day.day %><br>
@@ -17,12 +17,11 @@
 
       <%= form_with model: @day, url: plan_days_path do |f| %>
         <div class="form_group">
-          <%= f.label :日程, class: "col-md-4" %>
+          <%= f.label :日程, class: "col-md-4 col-5" %>
           <%= f.date_select :day, use_month_numbers: true, class: "col-md-4" %>
         </div>
-        <div class="form_group d-flex">
-          <div class="col-md-4"></div>
-          <%= f.submit "スケジュール入力", class: "btn btn-outline-dark ml-5 mt-5" %>
+        <div class="form_group text-center">
+          <%= f.submit "スケジュール入力", class: "btn btn-outline-dark mt-5" %>
         </div>
       <% end %>
     </div>

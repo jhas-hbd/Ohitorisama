@@ -1,25 +1,25 @@
 <div class="container">
   <div class="row pb-5">
-    <div class="col-md-8 mx-auto">
-      <h4 class="my-5">ユーザー編集</h4>
+    <div class="col-md-8 col-10 mx-auto">
+      <h4 class="my-5 text-center">ユーザー編集</h4>
 
       <%= render 'layouts/error', obj: @user %>
 
       <%= form_with model: @user, url: user_path, method: :patch do |f| %>
-        <div class="d-flex mb-4">
-          <%= image_tag @user.get_profile_image, size: '200x200', class: "rounded-circle mr-5" %>
-          <div class="form-group mt-5">
-            <%= f.label :プロフィール画像 %>
-            <%= f.file_field :profile_image, class: "form-control-file", accept: "image/*" %>
-          </div>
+        <div class="text-center">
+          <%= image_tag @user.get_profile_image, size: '100x100', class: "rounded-circle mr-5" %>
         </div>
-        <div class="form-group d-flex mb-4">
-          <%= f.label :ユーザーネーム, class: "mr-5" %>
-          <%= f.text_field :name, class: "form-control user_name w-50" %>
+        <div class="form-group d-md-flex mt-5">
+          <%= f.label :プロフィール画像, class: "col-md-4" %>
+          <%= f.file_field :profile_image, class: "form-control-file", accept: "image/*" %>
         </div>
-        <div class="form-group d-flex mb-5">
-          <%= f.label :自己紹介, class: "mr-5" %>
-          <%= f.text_area :introduction, rows: '3', class: "ml-5 form-control user_introduction w-50" %>
+        <div class="form-group d-md-flex mb-4">
+          <%= f.label :ユーザーネーム, class: "col-md-4" %>
+          <%= f.text_field :name, class: "form-control user_name col-md-6" %>
+        </div>
+        <div class="form-group d-md-flex mb-5">
+          <%= f.label :自己紹介, class: "col-md-4" %>
+          <%= f.text_area :introduction, rows: '3', class: "form-control user_introduction col-md-6" %>
         </div>
         <div class="form-group d-flex">
           <div class="mx-auto">

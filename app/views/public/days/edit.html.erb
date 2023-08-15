@@ -1,11 +1,11 @@
 <div class="container">
   <% @day.schedules.order(start_at: :asc).each do |schedule| %>
-    <div class="row">
-      <div class="col-md-3">
+    <div class="row mt-5 text-center" style="border-bottom: 1px solid;">
+      <div class="col-md-3 col-6">
         <%= schedule.start_at.strftime('%H:%M') %> ~
         <%= schedule.finished_at.strftime('%H:%M') %>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 col-6">
         <%= schedule.place %> |
         <%= schedule.cost %> 円
       </div>
@@ -24,7 +24,7 @@
     <%= link_to "スケジュールの追加", new_day_schedule_path(@day), class: "btn btn-primary mx-auto" %>
   </div>
   <div class="row">
-    <div class="col-md-6 mx-auto pb-5 pl-5">
+    <div class="col-md-4 col-10 mx-auto pb-5 pl-5">
 
       <h4 class="my-5">日程入力</h4>
 
@@ -32,12 +32,12 @@
 
       <%= form_with model: [@plan, @day], method: :patch do |f| %>
         <div class="form_group">
-          <%= f.label :日程, class: "col-md-4" %>
+          <%= f.label :日程, class: "col-md-4 col-5" %>
           <%= f.date_select :day, use_month_numbers: true, class: "col-md-4" %>
         </div>
         <div class="form_group d-flex justify-content-center">
-            <%= f.submit "変更を保存", class: "btn btn-outline-dark btn-sm mt-5 mr-5" %>
-            <%= link_to "削除", plan_day_path(@plan, @day), method: :delete, class: "btn btn-sm btn-outline-danger mt-5 ml-5" %>
+          <%= f.submit "変更を保存", class: "btn btn-outline-dark btn-sm mt-5 mr-5" %>
+          <%= link_to "削除", plan_day_path(@plan, @day), method: :delete, class: "btn btn-sm btn-outline-danger mt-5 ml-5" %>
         </div>
       <% end %>
     </div>

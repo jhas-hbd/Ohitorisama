@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4 class="my-5">コメント一覧</h4>
+      <h4 class="my-5 text-center">コメント一覧</h4>
       <div class="row">
-        <div class="col-md-3 text-center">コメントID</div>
-        <div class="col-md-3 text-center">ユーザーネーム</div>
-        <div class="col-md-3 text-center">コメント内容</div>
-        <div class="col-md-3 text-center">コメントしたプラン</div>
+        <div class="col-3 text-center">コメントID</div>
+        <div class="col-3 text-center">ユーザーネーム</div>
+        <div class="col-3 text-center">コメント内容</div>
+        <div class="col-3 text-center">コメントしたプラン</div>
       </div>
       <% @comments.each do |comment| %>
         <div class="row my-4">
-          <div class="col-md-3 text-center"><%= comment.id %></div>
-          <div class="col-md-3 text-center"><%= comment.user.name %></div>
-          <div class="col-md-3 text-center">
+          <div class="col-3 text-center"><%= comment.id %></div>
+          <div class="col-3 text-center"><%= comment.user.name %></div>
+          <div class="col-3 text-center">
             <%= comment.comment %><br>
             <%= link_to "削除", admin_plan_comment_path(comment.plan_id, comment), method: :delete %>
           </div>
-          <div class="col-md-3 text-center">
+          <div class="col-3 text-center">
             <%= link_to admin_plan_path(comment.plan) do %>
               <%= comment.plan.title %>
             <% end %>

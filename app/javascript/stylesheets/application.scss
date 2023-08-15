@@ -24,10 +24,6 @@ body {
   color: gray;
 }
 
-h1 {
-  font-family: 'Sawarabi Mincho', sans-serif;
-}
-
 /*エラーメッセージのずれ修正*/
 .field_with_errors {
   display: contents;
@@ -79,14 +75,24 @@ h1 {
   background-size: cover;
 }
 
-h1 {
+.top_text {
+  font-size: 45px;
   color: white;
+  font-family: 'Sawarabi Mincho', sans-serif;
 }
 
 .main-function {
   width: 80px;
   margin: 0 auto;
   border-bottom: 1px solid;
+}
+
+.sample-image {
+  display: flex;
+}
+
+.index-image {
+  margin-right: 150px;
 }
 
 //plans
@@ -135,4 +141,51 @@ h1 {
 .user {
   text-align: right;
   margin-bottom: 10px;
+}
+
+
+
+// メディアクエリ
+@media screen and (max-width: 1200px) {
+
+  // menuボタン
+  .globalMenuSp {
+    width: 70%;
+  }
+
+  // トップページ
+  .top {
+    background-image: url("../images/chaire.jpg");
+    background-size: cover;
+    background-position: right;
+  }
+
+  .top_text {
+    font-size: 25px;
+  }
+
+  // アバウトページ
+  .sample-image {
+    display: block;
+    justify-content: center;
+  }
+
+  .index-image {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+  // マイページ
+
+
+  // プラン一覧
+  .index {
+    display: flex;
+    justify-content: center;
+  }
+
+  .post:nth-child(3n) {
+    margin-right: 10px;
+  }
+
 }
