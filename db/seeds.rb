@@ -11,3 +11,4 @@ if Rails.env.development?
     password: 'adminmin'
   )
 end
+
