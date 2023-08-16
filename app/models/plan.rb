@@ -40,11 +40,13 @@ class Plan < ApplicationRecord
     自動車:0,公共交通機関:1,それ以外:2
   }
 
-  has_one_attached :plan_image
+  has_many_attached :plan_images
+  FILE_NUMBER_LIMIT = 5
+  validate :validate_number_of_files
 
-  def get_plan_image
-    (plan_image.attached?) ? plan_image : 'no_plan.jpg'
-  end
+  # def get_plan_image
+  #   (plan_image.attached?) ? plan_image : 'no_plan.jpg'
+  # end
 
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
@@ -61,6 +63,14 @@ class Plan < ApplicationRecord
       tag = Tag.find_or_create_by(name:new_name)
       self.tags << tag
     end
+  end
+
+
+  private
+
+  def validate_number_of_files
+    return if plan_images.length <= FILE_NUMBER_LIMIT
+    errors.add(:plan_images, "に添付できる画像は#{FILE_NUMBER_LIMIT}件までです。")
   end
 
 end
