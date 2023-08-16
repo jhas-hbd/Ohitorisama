@@ -31,6 +31,9 @@ body {
 
 /*Menuボタン*/
 .menu-bottom {
+  position: fixed;
+  right: 50px;
+  z-index : 2;
   cursor: pointer;
 }
 /* ナビ開いてる時のボタン */
@@ -141,6 +144,13 @@ body {
 .user {
   text-align: right;
   margin-bottom: 10px;
+}
+
+// 詳細ページ
+.show_created_at {
+  width: 400px;
+  margin: 0 auto;
+  text-align: right;
 }
 
 

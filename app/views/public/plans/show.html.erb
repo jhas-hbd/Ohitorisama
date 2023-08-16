@@ -16,32 +16,34 @@
           <%= @plan.title %>
         </h4>
         <%= image_tag @plan.get_plan_image, size: '400x300' %>
-        <p>
+        <div>
           <%= @plan.prefecture %> |
           <%= @plan.stay_days %> |
           <%= @plan.main_vehicle %> |
           <%= @plan.budget %><br>
           <%= @plan.impression %><br>
 
-          <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center" style="height: 40px; line-height: 40px;">
             <div>
               <% @plan_tags.each do |tag| %>
                 <i class="fas fa-tag"></i>
                 <%= tag.name %>
               <% end %>
             </div>
+
             <div id="bookmark_buttons_<%= @plan.id %>">
               <%= render 'public/bookmarks/bookmark', plan: @plan %>
             </div>
-            <div class="ml-2">
-              <%= @plan.created_at.strftime("%Y/%m/%d") %>
-              <%=link_to user_path(@plan.user) do %>
-                <%= image_tag @plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-              <% end %>
-            </div>
           </div>
 
-        </p>
+          <div class="show_created_at">
+            <%= @plan.created_at.strftime("%Y/%m/%d") %>
+            <%=link_to user_path(@plan.user) do %>
+              <%= image_tag @plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+            <% end %>
+          </div>
+
+        </div>
       </div>
 
       <div class="row my-5">
