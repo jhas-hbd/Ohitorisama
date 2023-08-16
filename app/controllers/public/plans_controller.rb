@@ -61,7 +61,7 @@ class Public::PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:title, :prefecture, :stay_days, :budget, :main_vehicle, :impression, :plan_image)
+    params.require(:plan).permit(:title, :prefecture, :stay_days, :budget, :main_vehicle, :impression, {plan_images: []})
   end
 
   def is_matching_login_user

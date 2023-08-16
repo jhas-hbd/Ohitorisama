@@ -1,7 +1,7 @@
-<div class"container">
+<div class="container">
   <div class="row">
 
-    <div class="col-md-2 col-10 mx-auto py-5 offset-md-1">
+    <div class="col-md-4 col-10 mx-auto py-5">
       <div id="comment">
         <%= render 'public/comments/comment', plan: @plan %>
       </div>
@@ -15,13 +15,34 @@
         <h4>
           <%= @plan.title %>
         </h4>
-        <%= image_tag @plan.get_plan_image, size: '400x300' %>
+
+        <div class="swiper" style="width: 100%; height: 300px;">
+          <div class="swiper-wrapper">
+            <% if @plan.plan_images.attached? %>
+              <% @plan.plan_images.each do |image| %>
+              <div class="swiper-slide">
+                <%= image_tag image, size: "400x300", class: 'img-fluid d-block mx-auto', style: 'width: 400px; height: 300px; object-fit: cover;' %>
+              </div>
+              <% end %>
+            <% else %>
+              <p class="mx-auto" style="line-height: 300px;">no image</p>
+            <% end %>
+          </div>
+          <!-- ページネーションの要素 -->
+          <div class="swiper-pagination"></div>
+           <!-- ナビゲーションボタン （前、次） -->
+          <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+          <div class="swiper-button-next"><i class="fas fa-chevron-circle-right"></i></div>
+        </div>
+
         <div>
-          <%= @plan.prefecture %> |
-          <%= @plan.stay_days %> |
-          <%= @plan.main_vehicle %> |
+          <div class="py-3">
+            <%= @plan.prefecture %> |
+            <%= @plan.stay_days %> |
+            <%= @plan.main_vehicle %> |
+          </div>
           <%= @plan.budget %><br>
-          <%= @plan.impression %><br>
+          <%= simple_format(@plan.impression, class: 'text-break') %><br>
 
           <div class="d-flex justify-content-center" style="height: 40px; line-height: 40px;">
             <div>
@@ -74,7 +95,7 @@
                 <%= schedule.cost %> 円
               </div>
               <div class="col-md-3">
-                <%= schedule.schedule_comment %>
+                <%= simple_format(schedule.schedule_comment, class: 'text-break') %>
               </div>
               <div class="col-md-3">
                 <%= schedule.transportation %> |

@@ -32,8 +32,8 @@
           <%= f.text_area :impression, class: "col-md-4 mb-3" %>
         </div>
         <div class="row d-flex">
-          <%= f.label :思い出の一枚, class: "col-md-4 mb-3" %>
-          <%= f.file_field :plan_image, class: "form-control-file col-md-4 mb-3", accept: "image/*" %>
+          <%= f.label :思い出（５枚まで選択できます）, class: "col-md-4 mb-3" %>
+          <%= f.file_field :plan_images, multiple: true, class: "form-control-file col-md-4 mb-3", accept: "image/*" %>
         </div>
         <div class="row d-flex">
           <label class="col-md-4 mb-3">タグ(,で複数タグ登録できます)</label>
