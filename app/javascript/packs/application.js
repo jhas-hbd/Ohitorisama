@@ -12,6 +12,8 @@ import "jquery"
 import "popper.js"
 import "bootstrap"
 import "../stylesheets/application";
+import Swiper from 'swiper/swiper-bundle.js';
+import 'swiper/swiper-bundle.css';
 
 Rails.start()
 // Turbolinks.start()
@@ -27,4 +29,22 @@ $(function() {
       $('.globalMenuSp').removeClass('active');
     }
   });
+});
+
+
+// Swiperのオプションを定数化
+const opt = {
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  }
+}
+
+// Swiperを実行(初期化)
+$(function() {
+  let swiper = new Swiper('.swiper',opt);
 });

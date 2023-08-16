@@ -1,44 +1,63 @@
-<div class="index">
+<div class="row">
   <% plans.each do |plan| %>
-  <div class="post shadow-lg">
-    <div>
-      <%= link_to plan_path(plan) do %>
-        <%= image_tag plan.get_plan_image, size: '300x200', class: "plan_image" %>
-      <% end %>
-    </div>
-    <div class="text">
-      <div class="title">
-        <strong>
-          <%= link_to plan_path(plan), class: "link" do %>
-            【<%= plan.title %>】
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="post shadow-lg mx-auto">
+
+      <div class="swiper" style="width: 300px; height: 200px;">
+        <div class="swiper-wrapper">
+          <% if plan.plan_images.attached? %>
+            <% plan.plan_images.each do |image| %>
+            <div class="swiper-slide">
+              <%= link_to plan_path(plan) do %>
+                <%= image_tag image, size: '300x200', class: "plan_image" %>
+              <% end %>
+            </div>
+            <% end %>
+          <% else %>
+            <p class="mx-auto" style="line-height: 200px;">no image</p>
           <% end %>
-        </strong>
-        <%= plan.prefecture %>
+        </div>
+        <!-- ページネーションの要素 -->
+        <div class="swiper-pagination"></div>
+         <!-- ナビゲーションボタン （前、次） -->
+        <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+        <div class="swiper-button-next"><i class="fas fa-chevron-circle-right ml-3"></i></div>
       </div>
 
-      <div class="impression">
-        <% if plan.days.empty? %>
-          <P style="color: red;">日程が入力されていません。</p>
-        <% else %>
-          <%= plan.impression.truncate(50) %>
-        <% end %>
-      </div>
+      <div class="text p-2">
+        <div class="title">
+          <strong>
+            <%= link_to plan_path(plan), class: "link" do %>
+              【<%= plan.title %>】
+            <% end %>
+          </strong>
+          <%= plan.prefecture %>
+        </div>
 
-      <div class="d-flex icons">
-        <% plan.tags.each do |tag| %>
-          <i class="fas fa-tag"></i>
-          <%= tag.name %><br>
-        <% end %>
-        <p id="bookmark_buttons_<%= plan.id %>" class="ml-2">
-          <%= render 'public/bookmarks/bookmark', plan: plan %>
-        </p>
-      </div>
+        <div class="impression">
+          <% if plan.days.empty? %>
+            <P style="color: red;">日程が入力されていません。</p>
+          <% else %>
+            <%= plan.impression.truncate(50) %>
+          <% end %>
+        </div>
 
-      <div class="user">
-        <%= plan.created_at.strftime("%Y/%m/%d") %>
-        <%=link_to user_path(plan.user) do %>
-          <%= image_tag plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-        <% end %>
+        <div class="d-flex icons">
+          <% plan.tags.each do |tag| %>
+            <i class="fas fa-tag"></i>
+            <%= tag.name %><br>
+          <% end %>
+          <p id="bookmark_buttons_<%= plan.id %>" class="ml-2">
+            <%= render 'public/bookmarks/bookmark', plan: plan %>
+          </p>
+        </div>
+
+        <div class="user">
+          <%= plan.created_at.strftime("%Y/%m/%d") %>
+          <%=link_to user_path(plan.user) do %>
+            <%= image_tag plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

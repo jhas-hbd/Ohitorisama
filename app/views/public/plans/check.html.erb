@@ -7,22 +7,43 @@
           <%= @plan.title %>
           <%= link_to "編集", edit_plan_path(@plan) %>
         </p>
-        <%= image_tag @plan.get_plan_image, size: '400x300' %>
-        <p>
-          <%= @plan.prefecture %> |
-          <%= @plan.stay_days %> |
-          <%= @plan.main_vehicle %> |
+
+        <div class="swiper" style="width: 100%; height: 300px;">
+          <div class="swiper-wrapper">
+            <% if @plan.plan_images.attached? %>
+              <% @plan.plan_images.each do |image| %>
+              <div class="swiper-slide">
+                <%= image_tag image, size: '400x300', class: 'img-fluid d-block mx-auto', style: 'width: 400px; height: 300px; object-fit: cover;' %>
+              </div>
+              <% end %>
+            <% else %>
+              <p class="mx-auto" style="line-height: 300px;">no image</p>
+            <% end %>
+          </div>
+          <!-- ページネーションの要素 -->
+          <div class="swiper-pagination"></div>
+           <!-- ナビゲーションボタン （前、次） -->
+          <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+          <div class="swiper-button-next"><i class="fas fa-chevron-circle-right"></i></div>
+        </div>
+
+        <div>
+          <div class="py-3">
+            <%= @plan.prefecture %> |
+            <%= @plan.stay_days %> |
+            <%= @plan.main_vehicle %> |
+          </div>
           <%= @plan.budget %><br>
-          <%= @plan.impression %><br>
+          <%= simple_format(@plan.impression, class: 'text-break') %><br>
           <% @plan_tags.each do |tag| %>
             <i class="fas fa-tag"></i>
             <%= tag.name %>
           <% end %>
-        </p>
+        </div>
       </div>
       <%= link_to "日程を追加", new_plan_day_path(@plan), class: "btn btn-primary" %>
       <% @days.order(day: :asc).each do |day| %>
-      <div style="border-bottom: 1px solid;">
+      <div style="width: 90%; border-bottom: 1px solid; margin: 0 auto;">
         <p class="mt-5">
           <%= day.day.strftime("%Y年%m月%d日") %>
           <%= link_to "編集", edit_plan_day_path(@plan, day) %>
@@ -37,8 +58,8 @@
               <%= schedule.place %> |
               <%= schedule.cost %> 円
             </div>
-            <div class="col-md-3">
-              <%= schedule.schedule_comment %>
+            <div class="col-md-3 col-10 mx-auto">
+              <%= simple_format(schedule.schedule_comment, class: 'text-break') %>
             </div>
             <div class="col-md-3">
               <%= schedule.transportation %> |
