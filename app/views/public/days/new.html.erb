@@ -12,9 +12,7 @@
         <% end %>
       </div>
       <h4 class="my-5">日程入力</h4>
-
       <%= render 'layouts/error', obj: @day %>
-
       <%= form_with model: @day, url: plan_days_path do |f| %>
         <div class="form_group">
           <%= f.label :日程, class: "col-md-4 col-3" %>

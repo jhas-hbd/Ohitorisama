@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 mx-auto text-center py-5">
-
       <div>
         <p>
           <%= @plan.title %>
@@ -47,7 +46,6 @@
         <div class="col-md-3">メモ</div>
         <div class="col-md-3">そこまでの移動</div>
       </div>
-
       <% @days.order(day: :asc).each do |day| %>
       <div style="border-bottom: 1px solid;">
         <p>
