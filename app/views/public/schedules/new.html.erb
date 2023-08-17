@@ -5,8 +5,6 @@
 
       <%= render 'layouts/error', obj: @schedule %>
 
-
-
       <% @schedules.order(start_at: :asc).each do |schedule| %>
       <div class="row ml-md-5 mb-5 mx-auto" style="border-bottom: 1px solid;">
         <div class="col-md-3 col-5 text-center">
@@ -18,7 +16,7 @@
           <%= schedule.cost %>円
         </div>
         <div class="col-md-3 col-10 text-center">
-          <%= schedule.schedule_comment %>
+          <%= simple_format(schedule.schedule_comment, class: 'text-break') %>
         </div>
         <div class="col-md-3 col-10 text-center">
           <%= schedule.transportation %> |
@@ -27,7 +25,6 @@
         </div>
       </div>
       <% end %>
-
 
       <div class="ml-md-5">
         <%= form_with model: @schedule, url: day_schedules_path do |f| %>
@@ -53,7 +50,7 @@
           </div>
           <div class="row d-flex">
             <p class="col-md-4">そこまでの</p>
-            <p class="col-md-4">-------------------------------------------</p>
+            <p class="col-md-4 ml-4">---------------------------------------</p>
           </div>
           <div class="row">
             <%= f.label :移動手段, class: "col-md-4 mb-3" %>
