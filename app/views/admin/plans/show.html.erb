@@ -1,23 +1,44 @@
-<div class"container">
+<div class="container">
   <div class="row">
-    <div class="col-md-8 mx-auto text-center py-5">
+    <div class="col-md-12 mx-auto text-center py-5">
 
       <div>
         <p>
           <%= @plan.title %>
         </p>
-        <%= image_tag @plan.get_plan_image, size: '400x300' %>
-        <p>
-          <%= @plan.prefecture %> |
-          <%= @plan.stay_days %> |
-          <%= @plan.main_vehicle %> |
+
+        <div class="swiper" style="width: 100%; height: 300px;">
+          <div class="swiper-wrapper">
+            <% if @plan.plan_images.attached? %>
+              <% @plan.plan_images.each do |image| %>
+              <div class="swiper-slide">
+                <%= image_tag image, size: "400x300", class: 'img-fluid d-block mx-auto', style: 'width: 400px; height: 300px; object-fit: cover;' %>
+              </div>
+              <% end %>
+            <% else %>
+              <p class="mx-auto" style="line-height: 300px;">no image</p>
+            <% end %>
+          </div>
+          <!-- ページネーションの要素 -->
+          <div class="swiper-pagination"></div>
+           <!-- ナビゲーションボタン （前、次） -->
+          <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+          <div class="swiper-button-next"><i class="fas fa-chevron-circle-right"></i></div>
+        </div>
+
+        <div>
+          <div class="py-3">
+            <%= @plan.prefecture %> |
+            <%= @plan.stay_days %> |
+            <%= @plan.main_vehicle %> |
+          </div>
           <%= @plan.budget %><br>
-          <%= @plan.impression %><br>
+          <%= simple_format(@plan.impression, class: 'text-break') %><br>
           <% @plan_tags.each do |tag| %>
             <i class="fas fa-tag"></i>
             <%= tag.name %>
           <% end %>
-        </p>
+        </div>
       </div>
 
       <div class="row my-5">
@@ -27,13 +48,13 @@
         <div class="col-md-3">そこまでの移動</div>
       </div>
 
-      <% @days.each do |day| %>
-      <div>
+      <% @days.order(day: :asc).each do |day| %>
+      <div style="border-bottom: 1px solid;">
         <p>
-          <%= day.date.strftime("%Y年%m月%d日") %>
+          <%= day.day.strftime("%Y年%m月%d日") %>
         </p>
         <div class="row mb-5">
-          <% day.schedules.each do |schedule| %>
+          <% day.schedules.order(start_at: :asc).each do |schedule| %>
           <div class="col-md-3 col-5 mx-auto">
             <%= schedule.start_at.strftime('%H:%M') %> ~
             <%= schedule.finished_at.strftime('%H:%M') %>
@@ -54,8 +75,8 @@
         </div>
       </div>
       <% end %>
-      <div class="row">
-        <%= link_to "戻る", admin_plans_path, class: "btn btn-outline-dark mx-auto" %>
+      <div>
+        <%= link_to "戻る", admin_plans_path, class: "btn btn-outline-dark mx-auto mt-5" %>
       </div>
     </div>
   </div>

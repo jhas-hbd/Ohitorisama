@@ -9,5 +9,5 @@
       <i class="fas fa-trash-alt"></i>
     <% end %>
   <% end %>
-  <p class="pl-5"><%= comment.comment %></p>
+  <p class="pl-5"><%= simple_format(comment.comment, class: 'text-break') %></p>
 <% end %>
