@@ -165,19 +165,16 @@ body {
 }
 
 
-@media screen and (max-width: 1199.98px) {}
-@media screen and (max-width: 991.98px) {}
+
+// メディアクエリ
 @media screen and (max-width: 767.98px) {
   // menuボタン
   .globalMenuSp {
     width: 70%;
   }
 }
-@media screen and (max-width: 575.98px) {}
 
-// メディアクエリ
 @media screen and (max-width: 1200px) {
-
   // トップページ
   .top {
     background-image: url("../images/chaire.jpg");
