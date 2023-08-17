@@ -1,6 +1,6 @@
 class Public::SchedulesController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:new, :edit, :update]
 
   def new
     @schedule = Schedule.new
@@ -33,7 +33,7 @@ class Public::SchedulesController < ApplicationController
     @plan = @day.plan
     @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_params)
-      redirect_to check_plan_path(@plan)
+      redirect_to check_plan_path(@plan), notice: "変更を保存しました。"
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class Public::SchedulesController < ApplicationController
 
     schedule = Schedule.find(params[:id])
     schedule.destroy
-    redirect_to check_plan_path(plan)
+    redirect_to check_plan_path(plan), notice: "スケジュールを削除しました。"
   end
 
 

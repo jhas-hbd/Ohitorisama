@@ -9,27 +9,27 @@
       <%= form_with model: @plan, method: :patch do |f| %>
         <div class="row">
           <%= f.label :タイトル, class: "col-md-4 mb-3" %>
-          <%= f.text_field :title, class: "col-md-4 mb-3" %>
+          <%= f.text_field :title, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
           <%= f.label :都道府県, class: "col-md-4 mb-3" %>
-          <%= f.select :prefecture, Plan.prefectures.keys, {}, class: "col-md-4 mb-3" %>
+          <%= f.select :prefecture, Plan.prefectures.keys, {}, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
           <%= f.label :宿泊日数, class: "col-md-4 mb-3" %>
-          <%= f.select :stay_days, Plan.stay_days.keys, {}, class: "col-md-4 mb-3" %>
+          <%= f.select :stay_days, Plan.stay_days.keys, {}, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
           <%= f.label :予算, class: "col-md-4 mb-3" %>
-          <%= f.select :budget, Plan.budgets.keys, {}, class: "col-md-4 mb-3" %>
+          <%= f.select :budget, Plan.budgets.keys, {}, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
           <%= f.label :主な移動手段, class: "col-md-4 mb-3" %>
-          <%= f.select :main_vehicle, Plan.main_vehicles.keys, {}, class: "col-md-4 mb-3" %>
+          <%= f.select :main_vehicle, Plan.main_vehicles.keys, {}, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
           <%= f.label :感想, class: "col-md-4 mb-3" %>
-          <%= f.text_area :impression, class: "col-md-4 mb-3" %>
+          <%= f.text_area :impression, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row d-flex">
           <%= f.label :思い出, class: "col-md-4 mb-3" %>

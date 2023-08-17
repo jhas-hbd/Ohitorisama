@@ -9,27 +9,27 @@
       <%= form_with model: @plan, method: :post do |f| %>
         <div class="row">
           <%= f.label :タイトル, class: "col-md-4 mb-3" %>
-          <%= f.text_field :title, class: "col-md-4 mb-3" %>
+          <%= f.text_field :title, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
           <%= f.label :都道府県, class: "col-md-4 mb-3" %>
-          <%= f.select :prefecture, options_for_select(Plan.prefectures.keys, selected: nil), { include_blank: '---' }, { class: "col-md-4 mb-3" } %>
+          <%= f.select :prefecture, options_for_select(Plan.prefectures.keys, selected: nil), { include_blank: '---' }, { class: "form-control col-md-4 mb-3" } %>
         </div>
         <div class="row">
           <%= f.label :宿泊日数, class: "col-md-4 mb-3" %>
-          <%= f.select :stay_days, options_for_select(Plan.stay_days.keys, selected: nil), { include_blank: '---' }, { class: "col-md-4 mb-3" } %>
+          <%= f.select :stay_days, options_for_select(Plan.stay_days.keys, selected: nil), { include_blank: '---' }, { class: "form-control col-md-4 mb-3" } %>
         </div>
         <div class="row">
           <%= f.label :予算, class: "col-md-4 mb-3" %>
-          <%= f.select :budget, options_for_select(Plan.budgets.keys, selected: nil), { include_blank: '---' }, { class: "col-md-4 mb-3" } %>
+          <%= f.select :budget, options_for_select(Plan.budgets.keys, selected: nil), { include_blank: '---' }, { class: "form-control col-md-4 mb-3" } %>
         </div>
         <div class="row">
           <%= f.label :主な移動手段, class: "col-md-4 mb-3" %>
-          <%= f.select :main_vehicle, options_for_select(Plan.main_vehicles.keys, selected: nil), { include_blank: '---' }, { class: "col-md-4 mb-3" } %>
+          <%= f.select :main_vehicle, options_for_select(Plan.main_vehicles.keys, selected: nil), { include_blank: '---' }, { class: "form-control col-md-4 mb-3" } %>
         </div>
         <div class="row">
           <%= f.label :感想, class: "col-md-4 mb-3" %>
-          <%= f.text_area :impression, class: "col-md-4 mb-3" %>
+          <%= f.text_area :impression, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row d-flex">
           <%= f.label :思い出（５枚まで選択できます）, class: "col-md-4 mb-3" %>

@@ -8,23 +8,23 @@
         <%= form_with model: [@day, @schedule], method: :patch do |f| %>
           <div class="row">
             <%= f.label :開始時刻, class: "col-md-4 mb-3" %>
-            <%= f.time_select :start_at, {}, class: "col-md-2 col-5 mb-3" %>
+            <%= f.time_select :start_at, {}, class: "form-control col-md-2 col-5 mb-3" %>
           </div>
           <div class="row">
             <%= f.label :終了時刻, class: "col-md-4 mb-3" %>
-            <%= f.time_select :finished_at, {}, class: "col-md-2 col-5 mb-3" %>
+            <%= f.time_select :finished_at, {}, class: "form-control col-md-2 col-5 mb-3" %>
           </div>
           <div class="row">
             <%= f.label :場所やイベント, class: "col-md-4 mb-3" %>
-            <%= f.text_field :place, class: "col-md-4 mb-3" %>
+            <%= f.text_field :place, class: "form-control col-md-4 mb-3" %>
           </div>
           <div class="row">
             <%= f.label :コメント, class: "col-md-4 mb-3" %>
-            <%= f.text_area :schedule_comment, class: "col-md-4 mb-3" %>
+            <%= f.text_area :schedule_comment, class: "form-control col-md-4 mb-3" %>
           </div>
           <div class="row">
             <%= f.label :費用, class: "col-md-4 mb-3" %>
-            <%= f.text_field :cost, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 円
+            <%= f.text_field :cost, :placeholder => "ない場合は0と記入", class: "form-control col-md-4 col-6 mb-3 mr-2" %> 円
           </div>
           <div class="row d-flex">
             <p class="col-md-4">そこまでの</p>
@@ -32,15 +32,15 @@
           </div>
           <div class="row">
             <%= f.label :移動手段, class: "col-md-4 mb-3" %>
-            <%= f.select :transportation, Schedule.transportations.keys, { include_blank: '---' }, class: "col-md-4 col-6 mb-3" %>
+            <%= f.select :transportation, Schedule.transportations.keys, { include_blank: '---' }, class: "form-control col-md-4 col-6 mb-3" %>
           </div>
           <div class="row">
             <%= f.label :移動時間, class: "col-md-4 mb-3" %>
-            <%= f.text_field :transfer_time, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3" %> 分
+            <%= f.text_field :transfer_time, :placeholder => "ない場合は0と記入", class: "form-control col-md-4 col-6 mb-3" %> 分
           </div>
           <div class="row">
             <%= f.label :交通費, class: "col-md-4 mb-3" %>
-            <%= f.text_field :expense, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3" %> 円
+            <%= f.text_field :expense, :placeholder => "ない場合は0と記入", class: "form-control col-md-4 col-6 mb-3" %> 円
           </div>
           <div class="row d-flex justify-content-center">
             <%= f.submit "変更を保存", class: "btn btn-outline-dark mr-5 mt-5" %>

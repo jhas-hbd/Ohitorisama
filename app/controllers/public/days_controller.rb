@@ -1,6 +1,6 @@
 class Public::DaysController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:new, :edit, :update]
 
   def new
     @plan = Plan.find(params[:plan_id])
@@ -27,7 +27,7 @@ class Public::DaysController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @day = Day.find(params[:id])
     if @day.update(day_params)
-      redirect_to check_plan_path(@plan)
+      redirect_to check_plan_path(@plan), notice: "変更を保存しました。"
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Public::DaysController < ApplicationController
     plan = Plan.find(params[:plan_id])
     day = Day.find(params[:id])
     day.destroy
-    redirect_to check_plan_path(plan)
+    redirect_to check_plan_path(plan), notice: "日程を削除しました。"
   end
 
 

@@ -9,7 +9,7 @@
             <% plan.plan_images.each do |image| %>
             <div class="swiper-slide">
               <%= link_to plan_path(plan) do %>
-                <%= image_tag image, size: '300x200', class: "plan_image" %>
+                <%= image_tag image, size: '300x200', class: "plan_image img-fluid d-block mx-auto", style: 'width: 300px; height: 200px; object-fit: cover;' %>
               <% end %>
             </div>
             <% end %>
