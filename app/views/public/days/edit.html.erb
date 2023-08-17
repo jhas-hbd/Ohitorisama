@@ -33,7 +33,7 @@
       <%= form_with model: [@plan, @day], method: :patch do |f| %>
         <div class="form_group">
           <%= f.label :日程, class: "col-md-4 col-3" %>
-          <%= f.date_select :day, use_month_numbers: true, class: "col-md-4 col-4" %>
+          <%= f.date_select :day, use_month_numbers: true, class: "col-md-4 col-5" %>
         </div>
         <div class="form_group d-flex justify-content-center">
           <%= f.submit "変更を保存", class: "btn btn-outline-dark btn-sm mt-5 mr-5" %>
