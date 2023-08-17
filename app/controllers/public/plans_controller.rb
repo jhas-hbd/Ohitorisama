@@ -41,7 +41,7 @@ class Public::PlansController < ApplicationController
     tag_list = params[:plan][:name].split(',')
     if @plan.update(plan_params)
       @plan.save_tags(tag_list)
-      redirect_to check_plan_path(@plan)
+      redirect_to check_plan_path(@plan), notice: "変更を保存しました。"
     else
       render :edit
     end
@@ -54,7 +54,7 @@ class Public::PlansController < ApplicationController
   def destroy
     plan = Plan.find(params[:id])
     plan.destroy
-    redirect_to plans_path
+    redirect_to plans_path, notice: "プランを削除しました。"
   end
 
 

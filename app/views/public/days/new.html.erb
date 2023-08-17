@@ -18,7 +18,7 @@
       <%= form_with model: @day, url: plan_days_path do |f| %>
         <div class="form_group">
           <%= f.label :日程, class: "col-md-4 col-3" %>
-          <%= f.date_select :day, use_month_numbers: true, class: "col-md-4 col-4" %>
+          <%= f.date_select :day, use_month_numbers: true, class: "form-control col-md-4 col-4" %>
         </div>
         <div class="form_group text-center">
           <%= f.submit "スケジュール入力", class: "btn btn-outline-dark mt-5" %>
