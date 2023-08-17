@@ -15,7 +15,28 @@
               <%= plan.title %>
             <% end %>
           </div>
-          <div class="col-4 text-center"><%= image_tag plan.get_plan_image, size: '100x70' %></div>
+          <div class="col-4 text-center">
+            <div class="swiper" style="width: 100%; height: 100%;">
+              <div class="swiper-wrapper">
+                <% if plan.plan_images.attached? %>
+                  <% plan.plan_images.each do |image| %>
+                  <div class="swiper-slide">
+                    <%= link_to plan_path(plan) do %>
+                      <%= image_tag image, size: '100x70' %>
+                    <% end %>
+                  </div>
+                  <% end %>
+                <% else %>
+                  <p class="mx-auto" style="line-height: 70px;">no image</p>
+                <% end %>
+              </div>
+              <!-- ページネーションの要素 -->
+              <div class="swiper-pagination"></div>
+               <!-- ナビゲーションボタン （前、次） -->
+              <div class="swiper-button-prev"><i class="fas fa-chevron-circle-left"></i></div>
+              <div class="swiper-button-next"><i class="fas fa-chevron-circle-right"></i></div>
+            </div>
+          </div>
         </div>
       <% end %>
       <div class="row justify-content-center my-5">

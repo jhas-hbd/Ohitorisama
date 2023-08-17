@@ -7,7 +7,7 @@
           <strong><%= @user.name %></strong>
         </p>
         <p style="font-size: 20px;">
-          <%= @user.introduction %>
+          <%= simple_format(@user.introduction, class: 'text-break') %>
         </p>
 
         <div class="d-flex justify-content-center">
