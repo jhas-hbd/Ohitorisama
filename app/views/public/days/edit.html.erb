@@ -25,11 +25,8 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-10 mx-auto pb-5 pl-md-5">
-
       <h4 class="my-5">日程入力</h4>
-
       <%= render 'layouts/error', obj: @day %>
-
       <%= form_with model: [@plan, @day], method: :patch do |f| %>
         <div class="form_group">
           <%= f.label :日程, class: "col-md-4 col-3" %>
