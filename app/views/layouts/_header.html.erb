@@ -23,6 +23,19 @@
               <li>
                 <%= link_to "コメント一覧", comment_admin_plans_path, class: 'nav-link text-dark' %>
               </li>
+            <% else %>
+              <li>
+                <%= link_to '管理者ログアウト', destroy_admin_session_path, class: 'nav-link text-dark', method: :delete %>
+              </li>
+              <li>
+                <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark' %>
+              </li>
+              <li>
+                <%= link_to "プラン一覧", admin_plans_path, class: 'nav-link text-dark' %>
+              </li>
+              <li>
+                <%= link_to "コメント一覧", comment_admin_plans_path, class: 'nav-link text-dark' %>
+              </li>
             <% end %>
           <% elsif user_signed_in? %>
             <li>
