@@ -46,7 +46,7 @@
           </div>
           <div class="row">
             <%= f.label :費用, class: "col-md-4 mb-3" %>
-            <%= f.text_field :cost, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 円
+            <%= f.number_field :cost, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 円
           </div>
           <div class="row d-flex">
             <p class="col-md-4">そこまでの</p>
@@ -58,11 +58,11 @@
           </div>
           <div class="row">
             <%= f.label :移動時間, class: "col-md-4 mb-3" %>
-            <%= f.text_field :transfer_time, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 分
+            <%= f.number_field :transfer_time, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 分
           </div>
           <div class="row">
             <%= f.label :交通費, class: "col-md-4 mb-3" %>
-            <%= f.text_field :expense, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 円
+            <%= f.number_field :expense, :placeholder => "ない場合は0と記入", class: "col-md-4 col-6 mb-3 mr-2" %> 円
           </div>
           <div class="row">
             <%= f.submit "スケジュール作成", class: "btn btn-outline-dark mx-auto mt-5" %>
