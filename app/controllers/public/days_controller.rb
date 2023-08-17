@@ -24,10 +24,10 @@ class Public::DaysController < ApplicationController
   end
 
   def update
-    plan = Plan.find(params[:plan_id])
-    day = Day.find(params[:id])
-    if day.update(day_params)
-      redirect_to check_plan_path(plan)
+    @plan = Plan.find(params[:plan_id])
+    @day = Day.find(params[:id])
+    if @day.update(day_params)
+      redirect_to check_plan_path(@plan)
     else
       render :edit
     end

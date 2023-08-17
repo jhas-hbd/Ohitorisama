@@ -16,7 +16,7 @@ class Public::SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.day_id = @day.id
     if @schedule.save
-      redirect_to request.referer
+      redirect_to new_day_schedule_path(@day)
     else
       render :new
     end
@@ -29,12 +29,11 @@ class Public::SchedulesController < ApplicationController
   end
 
   def update
-    day = Day.find(params[:day_id])
-    plan = day.plan
-
-    schedule = Schedule.find(params[:id])
-    if schedule.update(schedule_params)
-      redirect_to check_plan_path(plan)
+    @day = Day.find(params[:day_id])
+    @plan = @day.plan
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to check_plan_path(@plan)
     else
       render :edit
     end
