@@ -10,10 +10,10 @@
       <% @plans.each do |plan| %>
         <div class="row my-4">
           <div class="col-4 text-center"><%= plan.id %></div>
-          <div class="col-4 text-center"><%= plan.user.name %></div>
+          <div class="col-4 text-center"><%= simple_format(plan.user.name, class: 'text-break') %></div>
           <div class="col-4 text-center">
             <%= link_to admin_plan_path(plan) do %>
-              <%= plan.title %>
+              <%= simple_format(plan.title, class: 'text-break') %>
             <% end %>
           </div>
         </div>

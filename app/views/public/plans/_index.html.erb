@@ -28,7 +28,7 @@
         <div class="title">
           <strong>
             <%= link_to plan_path(plan), class: "link" do %>
-              【<%= plan.title %>】
+              <%= plan.title.truncate(14) %>
             <% end %>
           </strong>
           <%= plan.prefecture %>

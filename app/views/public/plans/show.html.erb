@@ -13,7 +13,7 @@
     <div class="col-md-8 text-center py-5">
       <div>
         <h4>
-          <%= @plan.title %>
+          <%= simple_format(@plan.title, class: 'text-break') %>
         </h4>
 
         <%= render 'public/plans/swiper', plan: @plan %>

@@ -4,21 +4,21 @@
       <h4 class="my-5 text-center">コメント一覧</h4>
       <div class="row">
         <div class="col-3 text-center">コメントID</div>
-        <div class="col-3 text-center">ユーザーネーム</div>
+        <div class="col-3 text-center">ユーザー</div>
         <div class="col-3 text-center">コメント内容</div>
-        <div class="col-3 text-center">コメントされたプラン</div>
+        <div class="col-3 text-center">プラン</div>
       </div>
       <% @comments.each do |comment| %>
         <div class="row my-4">
           <div class="col-3 text-center"><%= comment.id %></div>
-          <div class="col-3 text-center"><%= comment.user.name %></div>
+          <div class="col-3 text-center"><%= simple_format(comment.user.name, class: 'text-break') %></div>
           <div class="col-3 text-center">
             <%= simple_format(comment.comment, class: 'text-break') %>
             <%= link_to "削除", admin_plan_comment_path(comment.plan_id, comment), method: :delete %>
           </div>
           <div class="col-3 text-center">
             <%= link_to admin_plan_path(comment.plan) do %>
-              <%= comment.plan.title %>
+              <%= simple_format(comment.plan.title, class: 'text-break') %>
             <% end %>
           </div>
         </div>
