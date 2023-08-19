@@ -3,16 +3,12 @@
     <div class="d-flex mb-5" style="border: 1px solid; padding: 10px; border-radius: 10px;">
       <div>
         <%= link_to user_path(user) do %>
-          <%= image_tag user.get_profile_image, size: "100x100", class: "rounded-circle" %>
+          <%= image_tag user.get_profile_image, size: "50x50", class: "rounded-circle" %>
         <% end %>
       </div>
-      <div class="ml-5 mt-3">
+      <div class="ml-5">
         <p style="font-size: 20px;"><%= simple_format(user.name, class: 'text-break') %></p>
-        <div class="d-md-flex">
-          <p style="font-size: 15px;">投稿数：<%= user.plans.count %> / </p>
-          <p style="font-size: 15px;">フォロー<%= user.followeds.count %> / </p>
-          <p style="font-size: 15px;">フォロワー：<%= user.followers.count %></p>
-        </div>
+        <p><%= simple_format(user.introduction, class: 'text-break') %></p>
       </div>
     </div>
   <% end %>
