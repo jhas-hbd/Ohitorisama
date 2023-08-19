@@ -13,10 +13,10 @@
           <div class="col-3 text-center"><%= user.id %></div>
           <div class="col-3 text-center">
             <%= link_to admin_user_path(user) do %>
-              <%= user.name %>
+              <%= simple_format(user.name, class: 'text-break') %>
             <% end %>
           </div>
-          <div class="col-3 text-center"><%= user.email %></div>
+          <div class="col-3 text-center"><%= simple_format(user.email, class: 'text-break') %></div>
           <div class="col-3 text-center">
             <% if user.is_deleted == true %>
               <span style="color:darkgray;"><%= "退会" %></strong>
