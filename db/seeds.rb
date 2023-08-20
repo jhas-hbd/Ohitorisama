@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # 管理者情報
-# Admin.create!(
-#   email: ENV['ADMIN_MAIL'],
-#   password: ENV['ADMIN_PASS']
-# )
+Admin.create!(
+  email: ENV['ADMIN_MAIL'],
+  password: ENV['ADMIN_PASS']
+)
 
 # ユーザーデータ
 users = User.create!(

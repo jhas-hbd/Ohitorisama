@@ -24,7 +24,8 @@
 
 
 ## 設計書
-後ほど作成予定
+- ER図
+  https://drive.google.com/file/d/170XhDd1odlMZ9JCmHXZUGelkR1rZM8wP/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -32,3 +33,9 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## 使用素材
+- フリー画像素材として以下を使用
+  - Unsplash (https://unsplash.com/ja)
+- ロゴ作成に以下のサイトを使用
+  - Canva (https://www.canva.com/)
