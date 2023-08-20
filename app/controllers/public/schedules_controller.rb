@@ -16,7 +16,7 @@ class Public::SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.day_id = @day.id
     if @schedule.save
-      redirect_to new_day_schedule_path(@day)
+      redirect_to new_day_schedule_path(@day), notice: "スケジュールを作成しました。"
     else
       render :new
     end
