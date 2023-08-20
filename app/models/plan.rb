@@ -44,9 +44,18 @@ class Plan < ApplicationRecord
   FILE_NUMBER_LIMIT = 5
   validate :validate_number_of_files
 
-  # def get_plan_image
-  #   (plan_image.attached?) ? plan_image : 'no_plan.jpg'
-  # end
+  TAG_NAME_LIMIT = 10
+  def display_tags
+    count = 0
+    display_tags = []
+    tags.each do |tag|
+      count += tag.name.length
+      if count <= TAG_NAME_LIMIT
+        display_tags.push(tag)
+      end
+    end
+    display_tags
+  end
 
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
