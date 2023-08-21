@@ -8,31 +8,31 @@
       <div class="ml-md-5 text-center">
       <%= form_with model: @plan, method: :post do |f| %>
         <div class="row">
-          <%= f.label :タイトル, class: "col-md-4 mb-3" %>
+          <label class="col-md-4 mb-3">タイトル</label>
           <%= f.text_field :title, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
-          <%= f.label :都道府県, class: "col-md-4 mb-3" %>
+          <label class="col-md-4 mb-3">都道府県</label>
           <%= f.select :prefecture, options_for_select(Plan.prefectures.keys, selected: nil), { include_blank: '---' }, { class: "form-control col-md-4 mb-3" } %>
         </div>
         <div class="row">
-          <%= f.label :宿泊日数, class: "col-md-4 mb-3" %>
+          <label class="col-md-4 mb-3">宿泊日数</label>
           <%= f.select :stay_days, options_for_select(Plan.stay_days.keys, selected: nil), { include_blank: '---' }, { class: "form-control col-md-4 mb-3" } %>
         </div>
         <div class="row">
-          <%= f.label :予算, class: "col-md-4 mb-3" %>
+          <label class="col-md-4 mb-3">予算</label>
           <%= f.select :budget, options_for_select(Plan.budgets.keys, selected: nil), { include_blank: '---' }, { class: "form-control col-md-4 mb-3" } %>
         </div>
         <div class="row">
-          <%= f.label :主な移動手段, class: "col-md-4 mb-3" %>
+          <label class="col-md-4 mb-3">主な移動手段</label>
           <%= f.select :main_vehicle, options_for_select(Plan.main_vehicles.keys, selected: nil), { include_blank: '---' }, { class: "form-control col-md-4 mb-3" } %>
         </div>
         <div class="row">
-          <%= f.label :感想, class: "col-md-4 mb-3" %>
+          <label class="col-md-4 mb-3">感想</label>
           <%= f.text_area :impression, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row d-flex">
-          <%= f.label :思い出（５枚まで選択できます）, class: "col-md-4 mb-3" %>
+          <label class="col-md-4 mb-3">思い出（５枚まで選択できます</label>
           <%= f.file_field :plan_images, multiple: true, class: "form-control-file col-md-4 mb-3", accept: "image/*" %>
         </div>
         <div class="row d-flex">
