@@ -7,18 +7,18 @@
 
       <%= form_with model: @user, url: user_path, method: :patch do |f| %>
         <div class="text-center">
-          <%= image_tag @user.get_profile_image, size: '100x100', class: "rounded-circle mr-5" %>
+          <%= image_tag @user.get_profile_image, size: '100x100', class: "rounded-circle" %>
         </div>
         <div class="form-group d-md-flex mt-5">
-          <%= f.label :プロフィール画像, class: "col-md-4" %>
+          <%= f.label :profile_image, "プロフィール画像", class: "col-md-4" %>
           <%= f.file_field :profile_image, class: "form-control-file", accept: "image/*" %>
         </div>
         <div class="form-group d-md-flex mb-4">
-          <%= f.label :ユーザーネーム, class: "col-md-4" %>
+          <%= f.label :name, "ユーザーネーム", class: "col-md-4" %>
           <%= f.text_field :name, class: "form-control user_name col-md-6" %>
         </div>
         <div class="form-group d-md-flex mb-5">
-          <%= f.label :自己紹介, class: "col-md-4" %>
+          <%= f.label :introduction, "自己紹介", class: "col-md-4" %>
           <%= f.text_area :introduction, rows: '3', class: "form-control user_introduction col-md-6" %>
         </div>
         <div class="form-group d-flex">
