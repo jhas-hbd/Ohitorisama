@@ -1,42 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto">
+    <div class="col-md-8 col-10 mx-auto">
       <h4 class="my-5 text-center"><%= @user.name %>さんのユーザー情報編集</h4>
-
       <%= form_with model: [:admin, @user] do |f| %>
-        <table class="table table-borderless">
-          <tr>
-            <td>ユーザーID</td>
-            <td><%= @user.id %></td>
-          </tr>
-          <tr>
-            <td>ユーザーネーム</td>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <td>自己紹介</td>
-            <td><%= f.text_area :introduction %></td>
-          </tr>
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= f.text_field :email %></td>
-          </tr>
-          <tr>
-            <td>ユーザーステータス</td>
-            <td>
-              <%= f.radio_button :is_deleted, :false %>
+        <div class="field d-md-flex mb-3">
+          <div class="col-md-6">ユーザーID</div>
+          <div class="col-md-6"><%= @user.id %></div>
+        </div>
+        <div class="field d-md-flex mb-3">
+          <%= f.label :name, "ユーザーネーム", class: "col-md-6" %><br />
+          <%= f.text_field :name, class: "col-md-6" %>
+        </div>
+        <div class="field d-md-flex mb-3">
+          <%= f.label :introduction, "自己紹介", class: "col-md-6" %><br />
+          <%= f.text_area :introduction, class: "col-md-6" %>
+        </div>
+        <div class="field d-md-flex mb-3">
+          <%= f.label :email, "メールアドレス", class: "col-md-6" %><br />
+          <%= f.email_field :email, class: "col-md-6" %>
+        </div>
+        <div class="field d-md-flex mb-3">
+          <div class="col-md-6">ユーザーステータス</div>
+          <div class="col-md-6">
+            <%= f.radio_button :is_deleted, :false %>
               <%= f.label :is_deleted, "有効", { value: :false } %>
               <%= f.radio_button :is_deleted, :true %>
               <%= f.label :is_deleted, "退会", { value: :true } %>
-            </td>
-          </tr>
-        </table>
-        <div class="row justify-content-center my-5">
-          <%= f.submit "変更を保存" %>
+          </div>
+        </div>
+        <div class="actions text-center my-5">
+          <%= f.submit "変更を保存", class: "btn btn-outline-dark mb-5" %>
         </div>
       <% end %>
-
-
     </div>
   </div>
 </div>
