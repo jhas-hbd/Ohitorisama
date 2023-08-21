@@ -14,7 +14,7 @@
   <body>
     <%= render 'layouts/header' unless (params[:controller] == 'public/homes' && params[:action] == 'top') %>
     <main>
-      <p><%= notice %></p>
+      <%= notice %>
       <%= yield %>
     </main>
   </body>
