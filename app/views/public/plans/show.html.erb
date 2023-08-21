@@ -36,10 +36,10 @@
               <%= render 'public/bookmarks/bookmark', plan: @plan %>
             </div>
             <div>
-            <%= @plan.created_at.strftime("%Y/%m/%d") %>
-            <%=link_to user_path(@plan.user) do %>
-              <%= image_tag @plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-            <% end %>
+              <%= @plan.created_at.strftime("%Y/%m/%d") %>
+              <%=link_to user_path(@plan.user) do %>
+                <%= image_tag @plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+              <% end %>
             </div>
           </div>
         </div>
