@@ -31,15 +31,17 @@
               <% end %>
             </div>
           </div>
-          <div class="show_created_at">
-            <div id="bookmark_buttons_<%= @plan.id %>" class="mr-3">
-              <%= render 'public/bookmarks/bookmark', plan: @plan %>
-            </div>
-            <div>
-              <%= @plan.created_at.strftime("%Y/%m/%d") %>
-              <%=link_to user_path(@plan.user) do %>
-                <%= image_tag @plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-              <% end %>
+          <div class="row">
+            <div class="show_created_at">
+              <div id="bookmark_buttons_<%= @plan.id %>" class="mr-3">
+                <%= render 'public/bookmarks/bookmark', plan: @plan %>
+              </div>
+              <div>
+                <%= @plan.created_at.strftime("%Y/%m/%d") %>
+                <%=link_to user_path(@plan.user) do %>
+                  <%= image_tag @plan.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
