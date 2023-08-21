@@ -38,7 +38,7 @@
           <% if plan.days.empty? %>
             <P style="color: red;">日程が入力されていません。</p>
           <% else %>
-            <%= simple_format(plan.impression.truncate(30), class: 'text-break') %>
+            <%= plan.impression.truncate(50) %>
           <% end %>
         </div>
 

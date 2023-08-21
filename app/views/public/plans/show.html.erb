@@ -23,7 +23,7 @@
           </div>
           <%= @plan.budget %><br>
           <%= simple_format(@plan.impression, class: 'text-break') %><br>
-          <div class="row justify-content-center">
+          <div class="justify-content-center">
             <div>
               <% @plan_tags.each do |tag| %>
                 <i class="fas fa-tag"></i>
@@ -31,7 +31,7 @@
               <% end %>
             </div>
           </div>
-          <div class="row show_created_at">
+          <div class="show_created_at">
             <div id="bookmark_buttons_<%= @plan.id %>" class="mr-3">
               <%= render 'public/bookmarks/bookmark', plan: @plan %>
             </div>
