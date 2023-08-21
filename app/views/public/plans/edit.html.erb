@@ -8,35 +8,35 @@
       <div class="ml-md-5 text-center">
       <%= form_with model: @plan, method: :patch do |f| %>
         <div class="row">
-          <label class="col-md-4 mb-3">タイトル</label>
+          <%= f.label :title, "タイトル", class: "form-label col-md-4 mb-3" %>
           <%= f.text_field :title, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
-          <label class="col-md-4 mb-3">都道府県</label>
+          <%= f.label :prefecture, "都道府県", class: "form-label col-md-4 mb-3" %>
           <%= f.select :prefecture, Plan.prefectures.keys, {}, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
-          <label class="col-md-4 mb-3">宿泊日数</label>
+          <%= f.label :stay_days, "宿泊日数", class: "form-label col-md-4 mb-3" %>
           <%= f.select :stay_days, Plan.stay_days.keys, {}, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
-          <label class="col-md-4 mb-3">予算</label>
+          <%= f.label :budget, "予算", class: "form-label col-md-4 mb-3" %>
           <%= f.select :budget, Plan.budgets.keys, {}, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
-          <label class="col-md-4 mb-3">主な移動手段</label>
+          <%= f.label :main_vehicle, "主な移動手段", class: "form-label col-md-4 mb-3" %>
           <%= f.select :main_vehicle, Plan.main_vehicles.keys, {}, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row">
-          <label class="col-md-4 mb-3">感想</label>
+          <%= f.label :impression, "感想", class: "form-label col-md-4 mb-3" %>
           <%= f.text_area :impression, class: "form-control col-md-4 mb-3" %>
         </div>
         <div class="row d-flex">
-          <label class="col-md-4 mb-3">思い出（５枚まで選択できます</label>
+          <%= f.label :plan_images, "思い出（５枚まで選択できます）", class: "form-label col-md-4 mb-3" %>
           <%= f.file_field :plan_images, multiple: true, class: "form-control-file col-md-4 mb-3", accept: "image/*" %>
         </div>
         <div class="row d-flex">
-          <label class="col-md-4 mb-3">タグ(,で複数タグ登録できます)</label>
+          <%= f.label :name, "タグ(,で複数タグ登録できます)", class: "form-label col-md-4 mb-3" %>
           <%= f.text_field :name,value: @tag_list, class: 'form-control col-md-4 mb-3' %>
         </div>
         <div class="row d-flex">
