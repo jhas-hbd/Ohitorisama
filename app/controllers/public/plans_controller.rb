@@ -38,9 +38,9 @@ class Public::PlansController < ApplicationController
 
   def update
     @plan = Plan.find(params[:id])
-    tag_list = params[:plan][:name].split(',')
+    @tag_list = params[:plan][:name].split(',')
     if @plan.update(plan_params)
-      @plan.save_tags(tag_list)
+      @plan.save_tags(@tag_list)
       redirect_to check_plan_path(@plan), notice: "変更を保存しました。"
     else
       render :edit

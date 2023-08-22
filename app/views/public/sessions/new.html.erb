@@ -14,7 +14,7 @@
           <%= f.label :password, "パスワード", class: "col-md-6" %><br />
           <%= f.password_field :password, autofocus: true, autocomplete: "current-password", class: "col-md-6" %>
         </div>
-        
+
         <div>
           <% if devise_mapping.rememberable? %>
             <div class="field d-md-flex mt-3">
@@ -30,7 +30,7 @@
         <div class="text-center my-5">
           <%= f.submit "ログイン", class: "btn btn-outline-dark" %>
         </div>
-        
+
       <% end %>
 
       <div class="text-center my-5">
