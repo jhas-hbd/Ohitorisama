@@ -5,6 +5,9 @@
       <div class="mt-3 ml-md-5">
         <p style="font-size: 25px;">
           <strong><%= simple_format(@user.name, class: 'text-break') %></strong>
+          <% if @user.is_deleted == true %>
+            <p style="color: red;">このユーザーは退会しています。</p>
+          <% end %>
         </p>
         <p style="font-size: 20px;">
           <%= simple_format(@user.introduction, class: 'text-break') %>

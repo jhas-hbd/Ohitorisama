@@ -21,7 +21,7 @@
                 <% if plan.plan_images.attached? %>
                   <% plan.plan_images.each do |image| %>
                   <div class="swiper-slide">
-                    <%= link_to plan_path(plan) do %>
+                    <%= link_to admin_plan_path(plan) do %>
                       <%= image_tag image, size: '100x70' %>
                     <% end %>
                   </div>
