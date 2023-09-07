@@ -1,6 +1,6 @@
 class Public::DaysController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:new, :edit, :update]
+  before_action :is_matching_login_user, only: [:new, :edit, :update, :destroy]
 
   def new
     @plan = Plan.find(params[:plan_id])
