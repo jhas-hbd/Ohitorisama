@@ -19,7 +19,6 @@ class Public::PlansController < ApplicationController
   end
 
   def check
-    @plan = Plan.find(params[:id])
     @days = @plan.days
     @plan_tags = @plan.tags
   end
@@ -52,8 +51,8 @@ class Public::PlansController < ApplicationController
   end
 
   def destroy
-    plan = Plan.find(params[:id])
-    plan.destroy
+    @plan = Plan.find(params[:id])
+    @plan.destroy
     redirect_to plans_path, notice: "プランを削除しました。"
   end
 
@@ -65,8 +64,8 @@ class Public::PlansController < ApplicationController
   end
 
   def is_matching_login_user
-    plan = Plan.find(params[:id])
-    user = plan.user
+    @plan = Plan.find(params[:id])
+    user = @plan.user
     unless user.id == current_user.id
       redirect_to plans_path
     end
