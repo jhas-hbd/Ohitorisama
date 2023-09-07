@@ -1,6 +1,6 @@
 class Public::PlansController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:check, :edit, :update]
+  before_action :is_matching_login_user, only: [:check, :edit, :update, :destroy]
 
   def new
     @plan = Plan.new
