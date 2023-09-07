@@ -1,6 +1,6 @@
 <%= form_with model: [plan, comment], local: false do |f| %>
   <div class="form-group">
-    <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに", class: "w-100 form-control" %>
+    <%= f.text_area :comment, rows: '3', placeholder: "コメント(空欄不可)", class: "w-100 form-control" %>
   </div>
   <div class="form-group">
     <div class="row">
